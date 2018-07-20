@@ -41,18 +41,7 @@ const config = {
       },
       {
         test: /\.(gif|png|jpg|eot|wof|woff|ttf|svg)$/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              name: '[name].[ext]',
-              outputPath: 'images/',
-              publicPath: function() {
-                return '../public/images'; 
-              }
-            }
-          }
-        ]
+        loader: 'url-loader'
       }
     ],
   },
