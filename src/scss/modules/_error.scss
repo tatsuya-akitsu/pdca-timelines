@@ -1,0 +1,36 @@
+.app-err-msg {
+  background-color: #ffcfcf;
+  border: 2px solid #e85959;
+  border-radius: 3px;
+  display: none;
+  font-size: 0;
+  padding: .8rem 1rem;
+  width: 100%;
+
+  .fas {
+    @media screen and (max-width: 768px) {
+      font-size: 1.3rem;
+    }
+
+    color: $base-bl;
+    display: inline-block;
+    font-size: 1.45rem;
+    vertical-align: middle;
+  }
+
+  &.is-block {
+    display: block;
+  }
+}
+
+.err-msg-text {
+  @media screen and (max-width: 768px) {
+    font-size: 1.3rem;
+  }
+
+  color: $base-bl;
+  display: inline-block;
+  font-size: 1.45rem;
+  margin-left: .8rem;
+  vertical-align: middle;
+}

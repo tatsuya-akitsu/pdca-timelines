@@ -1,0 +1,99 @@
+// *************************************
+//
+//   Base
+//   -> Base-level tags (body, p, etc.)
+//
+// *************************************
+
+html {
+  display: block;
+  font-size: 62.5%;
+}
+
+body {
+  @media screen and (max-width: 768px) {
+    overflow-x: hidden;
+  }
+
+  background: #f3f7fc;
+  color: $base-bl;
+  font-family: $base-fontFamily;
+  height: 100%;
+  line-height: $base-lineHeight;
+  margin: 0 auto;
+  overflow-scrolling: touch;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-scrolling: touch;
+  -os-overflow-scrolling: touch;
+  padding: 0;
+  position: relative;
+  width: 100%;
+}
+
+// -------------------------------------
+//   Block Content
+// -------------------------------------
+// -------------------------------------
+//   Inline Content
+// -------------------------------------
+
+a {
+  color: #00605d;
+  font-size: 1.4rem;
+  font-weight: bold;
+  text-decoration: none;
+
+  &:hover,
+  &:focus,
+  &:visited {
+    color: #00605d;
+    text-decoration: none;
+  }
+}
+
+a,
+button {
+  transition: all .3s linear;
+}
+
+select {
+  appearance: none;
+
+  &::-ms-expand {
+    display: none;
+  }
+}
+
+img {
+  vertical-align: bottom;
+}
+
+input,
+label,
+select,
+textarea {
+  vertical-align: middle;
+}
+
+//ボタンのデフォルトcssリセット
+button {
+  appearance: none;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  padding: 0;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+*::before,
+*::after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}

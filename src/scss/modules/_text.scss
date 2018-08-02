@@ -1,0 +1,131 @@
+.md-headline {
+  line-height: 1;
+}
+
+.md-headline_h1 {
+  @media screen and (max-width: 768px) {
+    font-size: 3rem;
+  }
+
+  font-family: $lato;
+  font-size: 4rem;
+  letter-spacing: 2px;
+  text-align: center;
+}
+
+.md-headline_h3 {
+  @media screen and (max-width: 768px) {
+    font-size: 1.8rem;
+  }
+
+  font-family: $base-fontFamily;
+  font-size: 1.6rem;
+  letter-spacing: 1px;
+  text-align: left;
+}
+
+.md-text {
+  font-size: 1.4rem;
+  text-align: left;
+}
+
+.md-text_small {
+  @media screen and (max-width: 768px) {
+    font-size: .7rem;
+  }
+
+  font-size: 1.2rem;
+}
+
+.signup-text {
+  @media screen and (max-width: 768px) {
+    font-size: 1.3rem;
+  }
+
+  font-size: 1.4rem;
+  margin: 1rem 0 0;
+  text-align: center;
+
+  a {
+    text-decoration: underline;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
+
+.copyright {
+  font-size: .8rem;
+  text-align: center;
+}
+
+.dropzone-desc {
+  color: #ebebeb;
+  display: block;
+  font-family: $base-fontFamily;
+  font-size: 1.6rem;
+  left: 50%;
+  text-align: center;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  z-index: 10;
+}
+
+.room-name {
+  @media screen and (max-width: 768px) {
+    font-size: 1.3rem;
+  }
+
+  color: $base-bl;
+  font-family: $base-fontFamily;
+  font-size: 1.45rem;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.room-desc {
+  @media screen and (max-width: 768px) {
+    font-size: 1rem;
+  }
+
+  color: #3e3e3e;
+  font-family: $base-fontFamily;
+  font-size: 1.2rem;
+  font-weight: normal;
+  margin: .8rem 0 0;
+}
+
+.usr-name {
+  @media screen and (max-width: 768px) {
+    font-size: 1.3rem;
+  }
+
+  color: $base-bl;
+  font-family: $base-fontFamily;
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+
+.msg-time {
+  @media screen and (max-width: 768px) {
+    font-size: 1rem;
+  }
+
+  color: #ddd;
+  font-family: $lato;
+  font-size: 1.2rem;
+}
+
+.msg-text {
+  @media screen and (max-width: 768px) {
+    font-size: 1.3rem;
+  }
+
+  color: $base-bl;
+  font-family: $base-fontFamily;
+  font-size: 1.45rem;
+  margin: 1.6rem 0 0;
+  text-align: left;
+}

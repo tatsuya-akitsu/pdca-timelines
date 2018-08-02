@@ -1,0 +1,14 @@
+.md-icon_main {
+  @media screen and (max-width: 768px) {
+    width: 6rem;
+  }
+
+  display: block;
+  margin: 0 auto;
+  width: 10rem;
+}
+
+.fab {
+  display: inline-block;
+  vertical-align: middle;
+}

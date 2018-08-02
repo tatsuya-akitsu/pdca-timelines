@@ -1,0 +1,106 @@
+.app-roomList-wrap {
+  margin: 10rem 0 0;
+  width: 100%;
+}
+
+.room-list-wrap {
+  @media screen and (max-width: 768px) {
+    padding: 0 1.5rem;
+  }
+
+  @media screen and (min-width: 769px) {
+    max-width: 780px;
+  }
+
+  margin: 0 auto;
+  margin-top: 5rem;
+  width: 100%;
+}
+
+.app-room-list {
+  margin: 3rem 0 0;
+}
+
+.app-room-item {
+  border-bottom: 1px solid #ddd;
+
+  &:nth-last-of-type(1) {
+    border-bottom: none;
+  }
+
+  a {
+    display: block;
+    padding: 1.3rem .8rem;
+    transition: all .3s ease;
+
+    &:hover {
+      background-color: #f3f3f3;
+      transition: all .3s ease;
+
+      .room-name {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.app-room-wrap {
+  @media screen and (max-width: 768px) {
+    margin-top: 10rem;
+    padding: 0 1.5rem;
+  }
+
+  @media screen and (min-width: 769px) {
+    max-width: 780px;
+  }
+
+  margin: 0 auto;
+  margin-bottom: 25rem;
+  margin-top: 13rem;
+  width: 100%;
+}
+
+.msg-item {
+  @media screen and (max-width: 768px) {
+    margin: 2.5rem 0 0;
+    padding: 2rem 0 0;
+  }
+
+  border-top: 1px solid #ddd;
+  display: flex;
+  justify-content: flex-start;
+  margin: 3.5rem 0 0;
+  padding: 3rem 0 0;
+
+  &:nth-of-type(1) {
+    border: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .msg-object {
+    @media screen and (max-width: 768px) {
+      height: 5.5rem;
+      width: 5.5rem;
+    }
+
+    border-radius: 3px;
+    height: 7rem;
+    overflow: hidden;
+    width: 7rem;
+
+    img {
+      display: block;
+      width: 100%;
+    }
+  }
+
+  .msg-body {
+    @media screen and (max-width: 768px) {
+      width: calc(100% - 5.5rem);
+    }
+
+    padding: 0 0 0 2.5rem;
+    width: calc(100% - 7rem);
+  }
+}
