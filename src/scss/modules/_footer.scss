@@ -1,0 +1,16 @@
+.md-footer {
+  width: 100%;
+  z-index: 100;
+}
+
+.top-footer {
+  @media screen and (max-width: 768px) {
+    position: relative;
+  }
+
+  @media screen and (min-width: 769px) {
+    bottom: 2rem;
+    left: 1rem;
+    position: absolute;
+  }
+}

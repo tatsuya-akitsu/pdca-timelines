@@ -1,0 +1,151 @@
+.md-btn {
+  @media screen and (max-width: 768px) {
+    padding: 1.5rem 4rem;
+  }
+
+  border-radius: 5px;
+  display: inline-block;
+  font-family: $base-fontFamily;
+  font-size: 1.45rem;
+  font-weight: bold;
+  line-height: 1;
+  padding: 1.3rem 3.5rem;
+  text-align: center;
+  transition: all .3s ease;
+}
+
+.btn-signin {
+  background-color: $base-wh;
+  color: #00afa9;
+
+  &:hover {
+    background-color: #00afa9;
+    color: $base-wh;
+  }
+}
+
+.btn-twitter {
+  @media screen and (max-width: 768px) {
+    padding: 1.5rem 2rem;
+  }
+
+  background-color: $base-wh;
+  color: #1da1f2;
+  margin: 0 1.5rem 0 0;
+
+  &:hover {
+    background-color: #1da1f2;
+    color: $base-wh;
+  }
+
+  .fab {
+    padding: 0 .8rem 0 0;
+  }
+}
+
+.btn-google {
+  @media screen and (max-width: 768px) {
+    padding: 1.5rem 2rem;
+  }
+
+  background-color: $base-wh;
+  color: #db4437;
+  margin: 0 0 0 1.5rem;
+
+  &:hover {
+    background-color: #db4437;
+    color: $base-wh;
+  }
+
+  .fab {
+    padding: 0 .8rem 0 0;
+  }
+}
+
+.btn-signup {
+  background-color: $base-wh;
+  color: #bc1399;
+
+  &:hover {
+    background-color: #bc1399;
+    color: $base-wh;
+  }
+}
+
+.btn-addRoom {
+  @media screen and (max-width: 768px) {
+    padding: 1rem 3rem;
+  }
+
+  background-color: #008883;
+  color: $base-wh;
+  margin: 2rem 0 0;
+
+  .material-icons {
+    margin: 0 .5rem 0 0;
+    vertical-align: middle;
+  }
+
+  span {
+    display: inline-block;
+    line-height: 24px;
+    vertical-align: middle;
+  }
+
+  &:hover {
+    background-color: $base-wh;
+    color: #008883;
+  }
+}
+
+.btn-back {
+  @media screen and (max-width: 768px) {
+    padding: 1rem 2rem;
+  }
+
+  background-color: $base-wh;
+  font-size: 1.2rem;
+  padding: .7rem 3rem;
+
+  .material-icons {
+    margin: 0 .5rem 0 0;
+    vertical-align: middle;
+  }
+
+  span {
+    display: inline-block;
+    line-height: 24px;
+    vertical-align: middle;
+  }
+
+  &:hover {
+    background-color: #00605d;
+    color: $base-wh;
+  }
+}
+
+.btn-msg-submit {
+  @media screen and (max-width: 768px) {
+    padding: 1rem 2rem;
+  }
+
+  background-color: #008883;
+  color: $base-wh;
+  margin: 1rem 0 0;
+
+  .material-icons {
+    margin: 0 .5rem 0 0;
+    vertical-align: middle;
+  }
+
+  span {
+    display: inline-block;
+    line-height: 24px;
+    vertical-align: middle;
+  }
+
+  &:hover {
+    background-color: $base-wh;
+    color: #008883;
+  }
+}

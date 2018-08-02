@@ -1,0 +1,56 @@
+// *************************************
+//
+//   Settings
+//   -> Fonts, Variables
+//
+// *************************************
+
+// -------------------------------------
+//   Variables
+// -------------------------------------
+
+// ----- Base Colors ----- //
+$base-background: #fff;
+$base-bl: #191919;
+$base-wh: #fff;
+
+// ----- Base Content ----- //
+$base-fontFamily: "ヒラギノ角ゴシック Pro", "Hiragino Kaku Gothic Pro", "メイリオ", "Meiryo", "ＭＳ Ｐゴシック", "MS PGothic", "YuGothic", "Yu Gothic", "游ゴシック", "游ゴシック体", "Lato", "arial", "helvetica", sans-serif;
+$baseFont-size: 1.6rem;
+$base-lineHeight: 1.6;
+$yug: "YuGothic", "Yu Gothic", "游ゴシック", "游ゴシック体", "ヒラギノ角ゴシック Pro", "Hiragino Kaku Gothic Pro", "メイリオ", "Meiryo", "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+$lato: 'Lato', sans-serif;
+
+// ----- Base Layout ----- //
+
+// ----- Content ----- //
+
+// ----- Layout ----- //
+$l-Width: 100%;
+$max-width: 1185px;
+
+@mixin inner() {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: $max-width;
+  min-width: $max-width;
+  width: $l-Width;
+}
+
+.fleB {
+  display: flex;
+  justify-content: space-between;
+}
+
+.fleW {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.posR {
+  position: relative;
+}
+
+.posA {
+  position: absolute;
+}
