@@ -1,74 +1,62 @@
 .report-list {
+  display: flex;
+  justify-content: space-between;
   width: 100%;
 }
 
 .reports-item {
-  margin: 2rem 0 0;
-
-  &:nth-of-type(1) {
-    margin: 0;
-  }
+  margin-bottom: 2rem;
+  width: 40%;
 }
 
 .reports-wrap {
-  align-items: center;
-  background-color: #f0f1f4;
+  background-color: #F0F1F4;
   border-radius: 5px;
-  display: flex;
-  justify-content: space-between;
-  padding: 3.2rem;
+  padding: 2rem;
 }
 
 .reports-panel-left {
-  padding-right: 3.2rem;
-  width: 20%;
+  border-bottom: 2px solid $base-wh;;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 2rem;
+  width: 100%;
 }
 
 .reports-panel-right {
-  border-left: 1px solid $base-wh;
-  padding-left: 3.2rem;
-  width: 80%;
-}
-
-.report-day {
-  font-family: $work;
-  font-size: 3rem;
-  font-weight: bold;
-  text-align: center;
+  padding-top: 2rem;
+  width: 100%;
 }
 
 .report-date {
   font-family: $work;
   font-size: 1.6rem;
   font-weight: bold;
-  margin: 1.4rem 0 0;
-  text-align: center;
-}
-
-.report-task-wrap,
-.report-detail,
-.report-btn-wrap {
-  display: inline-block;
-  vertical-align: middle;
+  text-align: left;
 }
 
 .report-task-wrap {
-  width: 60%;
+  width: 100%;
 }
 
 .report-detail {
-  width: 20%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 4rem 0 0;
+  width: 100%;
 }
 
 .report-btn-wrap {
   text-align: center;
-  width: 20%;
+  width: auto;
 
   .md-btn--style03 {
-    margin: 2.4rem 0 0;
+    margin: 0 2rem 0 0 !important;
 
-    &:nth-of-type(1) {
-      margin: 0;
+    &:nth-last-of-type(1) {
+      margin: 0 !important;
     }
   }
 }
@@ -113,7 +101,7 @@
 }
 
 .report-detail-item {
-  margin: 1.6rem 0 0;
+  flex: 1;
 
   &:nth-of-type(1) {
     margin: 0;
@@ -126,8 +114,15 @@
     text-align: center !important;
   }
 
-  .md-num {
-    margin: 1rem 0 0;
-    text-align: center;
+  .report-detail-box {
+    margin: 2rem 0 0;
+    position: relative;
+    display: inline-block;
+
+    .md-num {
+      position: absolute;
+      top: -.5rem;
+      left: -.5rem;
+    }
   }
 }

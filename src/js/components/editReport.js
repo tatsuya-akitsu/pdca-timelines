@@ -4,6 +4,10 @@ import firebase from 'firebase';
 import moment from 'moment';
 
 import logo from '../../images/logo_horizontal.svg';
+import plus from '../../images/plus.svg';
+import minus from '../../images/minus.svg';
+import plusWhite from '../../images/plus_white.svg';
+import complete from '../../images/complete.svg';
 
 class EditReport extends Component {
   constructor(props) {
@@ -93,6 +97,7 @@ class EditReport extends Component {
     const removeBtn = document.createElement('button')
 
     actionDOM.classList.add('report-add-action')
+    actionInput.classList.add('md-form-input')
     actionInput.setAttribute('type', 'text')
     actionInput.setAttribute('name', 'action')
     actionInput.setAttribute('placeholder', 'コードレビューを丁寧に進める')
@@ -101,11 +106,11 @@ class EditReport extends Component {
 
     addBtn.classList.add('md-btn-square')
     addBtn.classList.add('md-btn-plus')
-    addBtn.innerText = '+'
+    addBtn.innerHTML = `<img src=${plus} alt="" class="md-icon md-icon-plus" />`
     addBtn.addEventListener('click', this.handleAddActionInput)
     removeBtn.classList.add('md-btn-square')
     removeBtn.classList.add('md-btn-minus')
-    removeBtn.innerText = '-'
+    removeBtn.innerHTML = `<img src=${minus} alt="" class="md-icon md-icon-minus" />`
     removeBtn.addEventListener('click', this.handleRemoveActionInput)
 
     actionDOM.appendChild(actionInput)
@@ -145,6 +150,7 @@ class EditReport extends Component {
     const removeBtn = document.createElement('button')
 
     taskDOM.classList.add('report-add-task')
+    taskInput.classList.add('md-form-input')
     taskInput.setAttribute('type', 'text')
     taskInput.setAttribute('name', 'action')
     taskInput.setAttribute('placeholder', 'デザイン構築')
@@ -153,11 +159,11 @@ class EditReport extends Component {
 
     addBtn.classList.add('md-btn-square')
     addBtn.classList.add('md-btn-plus')
-    addBtn.innerText = '+'
+    addBtn.innerHTML = `<img src=${plus} alt="" class="md-icon md-icon-plus" />`
     addBtn.addEventListener('click', this.handleAddTaskInput)
     removeBtn.classList.add('md-btn-square')
     removeBtn.classList.add('md-btn-minus')
-    removeBtn.innerText = '-'
+    removeBtn.innerHTML = `<img src=${minus} alt="" class="md-icon md-icon-minus" />`
     removeBtn.addEventListener('click', this.handleRemoveTaskInput)
 
     taskDOM.appendChild(taskInput)
@@ -270,6 +276,7 @@ class EditReport extends Component {
 
     nextActDOM.classList.add('md-form-group')
     nextActDOM.classList.add('form-action-item')
+    nextActInput.classList.add('md-form-input')
     nextActInput.setAttribute('type', 'text')
     nextActInput.setAttribute('name', 'nextAction')
     nextActInput.setAttribute('placeholder', 'コミュニケーションエラーを回避する')
@@ -278,11 +285,11 @@ class EditReport extends Component {
 
     addBtn.classList.add('md-btn-square')
     addBtn.classList.add('md-btn-plus')
-    addBtn.innerText = '+'
+    addBtn.innerHTML = `<img src=${plus} alt="" class="md-icon md-icon-plus" />`
     addBtn.addEventListener('click', this.handleAddNextActInput)
     removeBtn.classList.add('md-btn-square')
     removeBtn.classList.add('md-btn-minus')
-    removeBtn.innerText = '-'
+    removeBtn.innerHTML = `<img src=${minus} alt="" class="md-icon md-icon-minus" />`
     removeBtn.addEventListener('click', this.handleRemoveNextActInput)
 
     nextActDOM.appendChild(nextActInput)
@@ -364,7 +371,7 @@ class EditReport extends Component {
             <img src={logo} alt="RIOT" className="md-img md-img-logo" />
           </div>
         </header>
-        <section className="md-section reports-section">
+        <section className="md-section reportsDetail-section">
           <div className="md-wrapper">
             <h2 className="md-title md-title-h2">PDCA編集</h2>
             <div className="md-inner">
@@ -385,11 +392,12 @@ class EditReport extends Component {
                         type="text"
                         name="action"
                         placeholder="コードレビューを丁寧に進める"
+                        className="md-form-input"
                         onChange={this.handleAddAction}
                         onBlur={this.handleAddAction}
                       />
-                      <button className="md-btn-square md-btn-plus" onClick={this.handleAddActionInput}>+</button>
-                      <button className="md-btn-square md-btn-minus" onClick={this.handleRemoveActionInput}>-</button>
+                      <button className="md-btn-square md-btn-plus" onClick={this.handleAddActionInput}><img src={plus} alt="" className="md-icon md-icon-plus" /></button>
+                      <button className="md-btn-square md-btn-minus" onClick={this.handleRemoveActionInput}><img src={minus} alt="" className="md-icon md-icon-minus" /></button>
                     </div>
                   </div>
                 </div>
@@ -399,11 +407,13 @@ class EditReport extends Component {
                     {currentTasks.map((t, i) => {
                       return (
                         <div className="report-task-checkbox" key={i}>
-                          <input
-                            type="checkbox"
-                            name="task"
-                            value={i}
-                          />{t.task}
+                          <label className="md-control">
+                            <input type="checkbox" name="task" value={i} />
+                            <span className="md-icon md-icon-checkbox" />
+                            <span className="md-text md-task-name">
+                              {t.task}
+                            </span>
+                          </label>
                         </div>
                       )
                     })}
@@ -414,11 +424,12 @@ class EditReport extends Component {
                         type="text"
                         name="task"
                         placeholder="デザイン構築"
+                        className="md-form-input"
                         onChange={this.handleAddTask}
                         onBlur={this.handleAddTask}
                       />
-                      <button className="md-btn-square md-btn-plus" onClick={this.handleAddTaskInput}>+</button>
-                      <button className="md-btn-square md-btn-minus" onClick={this.handleRemoveTaskInput}>-</button>
+                      <button className="md-btn-square md-btn-plus" onClick={this.handleAddTaskInput}><img src={plus} alt="" className="md-icon md-icon-plus" /></button>
+                      <button className="md-btn-square md-btn-minus" onClick={this.handleRemoveTaskInput}><img src={minus} alt="" className="md-icon md-icon-minus" /></button>
                     </div>
                   </div>
                 </div>
@@ -442,20 +453,19 @@ class EditReport extends Component {
                     })}
                     </div>
                     <div className="md-add-log-wrap">
-                      <h4 className="md-title md-title-h4">新規追加</h4>
                       <input
                         type="text"
                         name="log"
                         placeholder="朝会"
+                        className="md-form-input md-form-input--log"
                         onChange={this.handleAddLog}
                         onBlur={this.handleResetLogInput}
                       />
-                      <button className="md-btn md-btn--style03 md-btn--color01" onClick={this.handleStartLog}>開始</button>
-                      <button className="md-btn md-btn--style03 md-btn--color02" onClick={this.handleEndLog}>完了</button>
                       <div className="md-cause-wrap">
                         <h4 className="md-title md-title-h4">行動理由</h4>
                         <textarea
                           name="cause"
+                          placeholder="dockerに新しいコンテナを立てる必要がある為"
                           onChange={this.handleAddCause}
                           onBlur={this.handleResetCauseTextArea}
                         />
@@ -464,16 +474,20 @@ class EditReport extends Component {
                         <h4 className="md-title md-title-h4">振り返り</h4>
                         <textarea
                           name="retrospective"
+                          placeholder="docker-compose downを癖で打ってしまうのを治したいところ"
                           onChange={this.handleAddRetro}
                           onBlur={this.handleResetRetroTextArea}
                         />
                       </div>
+                      <div className="log-btn-wrap">
+                        <button className="md-btn md-btn--style03 md-btn--color01" onClick={this.handleStartLog}><span className="md-btn-name">開始</span></button>
+                        <button className="md-btn md-btn--style03 btn--color02" onClick={this.handleEndLog}><span className="md-btn-name">完了</span></button>
+                      </div>
                     </div>
                   </div>
                 </div>
-                {console.log(this.state)}
                 <div className="md-form-group">
-                  <label>振り返り</label>
+                  <label>全体振り返り</label>
                   <textarea
                     name="retrospective"
                     onChange={this.handleAllRetro}
@@ -488,16 +502,25 @@ class EditReport extends Component {
                         type="text"
                         name="action"
                         placeholder="コードレビューを丁寧に進める"
+                        className="md-form-input"
                         onChange={this.handleNextAction}
                         onBlur={this.handleNextAction}
                       />
-                      <button className="md-btn-square md-btn-plus" onClick={this.handleAddNextActInput}>+</button>
-                      <button className="md-btn-square md-btn-minus" onClick={this.handleRemoveNextActInput}>-</button>
+                      <button className="md-btn-square md-btn-plus" onClick={this.handleAddNextActInput}><img src={plus} alt="" className="md-icon md-icon-plus" /></button>
+                      <button className="md-btn-square md-btn-minus" onClick={this.handleRemoveNextActInput}><img src={minus} alt="" className="md-icon md-icon-minus" /></button>
                     </div>
                   </div>
                 </div>
-                <Link to="/reports" className="md-btn md-btn--style02" onClick={this.handleSetReport}>Set task</Link>
-                <Link to="/reports/report/:reportId" className="md-btn md-btn--style02" onClick={this.handleCompReport}>Completed</Link>
+                <div className="set-task-wrap">
+                  <Link to="/reports" className="md-btn md-btn--style02" onClick={this.handleSetReport}>
+                    <img src={plusWhite} alt="" className="md-icon md-icon-set" />
+                    <span className="md-btn-name">Set task</span>
+                  </Link>
+                  <Link to="/reports/report/:reportId" className="md-btn md-btn--style02 btn--color03" onClick={this.handleCompReport}>
+                    <img src={complete} alt="" className="md-icon md-icon-complete" />
+                    <span className="md-btn-name">Completed</span>
+                  </Link>
+                </div>
               </form>
             </div>
           </div>

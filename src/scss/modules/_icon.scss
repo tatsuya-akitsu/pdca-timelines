@@ -68,3 +68,41 @@
   margin: 0 1rem 0 0;
   width: 2.7rem;
 }
+
+.md-icon-actionBadge,
+.md-icon-taskBadge,
+.md-icon-nextActBadge {
+  width: 4rem;
+}
+
+.md-icon-weather {
+  display: block;
+  margin-left: 0;
+  margin-right: auto;
+  margin-bottom: 2rem;
+  width: 16rem;
+}
+
+.md-icon-checkbox {
+  position: relative;
+  line-height: 1;
+  margin: -.5px 1rem 0 0;
+
+  &::before {
+    content: "\f0c8";
+    font-family: "Font Awesome 5 Free";
+    font-weight: normal;
+    color: #F27E7C;
+    font-size: 1.7rem;
+  }
+}
+
+.md-icon-set {
+  margin: 0 1rem 0 0;
+  width: 2rem;
+}
+
+.md-icon-complete {
+  margin: 0 1rem 0 0;
+  width: 2rem;
+}

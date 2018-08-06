@@ -8,6 +8,16 @@
   font-size: 4rem;
 }
 
+.md-title-h3 {
+  font-size: 2.6rem;
+  text-align: left;
+}
+
+.md-title-h4 {
+  font-size: 2rem;
+  text-align: left;
+}
+
 .md-text {
   color: $base-bl;
   font-family: $base-fontFamily;
@@ -56,11 +66,17 @@
 }
 
 .md-num {
-  color: $base-bl;
+  color: $base-wh;
   font-family: $work;
-  font-weight: bold;
 }
 
 .md-num--style01 {
-  font-size: 2rem;
+  background-color: $base-pu;
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  text-align: center;
+  line-height: 2.4rem;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, .2);
 }

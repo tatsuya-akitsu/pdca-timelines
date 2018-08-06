@@ -1,6 +1,6 @@
 .md-form-group {
   font-size: 0;
-  margin: 2rem 0 0;
+  margin: 3rem 0 0;
   width: 100%;
 
   &:nth-of-type(1) {
@@ -18,7 +18,7 @@
   border-radius: 5px;
   font-size: 1.4rem;
   height: 4rem;
-  padding: .8rem 1.2rem;
+  padding: 0.8rem 1.2rem;
   text-align: left;
   width: 100%;
 
@@ -53,7 +53,7 @@
   &:focus {
     box-shadow: 0 0 0 1.5px #6c8dad;
     outline: none;
-    transition: .3s;
+    transition: 0.3s;
   }
 }
 
@@ -63,11 +63,56 @@
   .check-pw {
     cursor: pointer;
     font-size: 1.4rem;
-    padding: .8rem;
+    padding: 0.8rem;
     position: absolute;
     right: 1rem;
     top: 50%;
     transform: translate(0, -50%);
     z-index: 9999;
+  }
+}
+
+textarea {
+  background-color: #f8f8f8;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.4rem;
+  height: 10rem;
+  padding: 0.8rem 1.2rem;
+  text-align: left;
+  width: 100%;
+
+  &::-webkit-input-placeholder {
+    color: #d1d1d1;
+    font-family: $base-fontFamily;
+    font-size: 1.2rem;
+    font-weight: lighter;
+  }
+
+  &:-moz-placeholder {
+    color: #d1d1d1;
+    font-family: $base-fontFamily;
+    font-size: 1.2rem;
+    font-weight: lighter;
+  }
+
+  &::-moz-placeholder {
+    color: #d1d1d1;
+    font-family: $base-fontFamily;
+    font-size: 1.2rem;
+    font-weight: lighter;
+  }
+
+  &:-ms-input-placeholder {
+    color: #d1d1d1;
+    font-family: $base-fontFamily;
+    font-size: 1.2rem;
+    font-weight: lighter;
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 1.5px #6c8dad;
+    outline: none;
+    transition: 0.3s;
   }
 }
