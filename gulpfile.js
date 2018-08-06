@@ -37,7 +37,7 @@ gulp.task('webpack', () => webpackStream(webpackConfig, webpack).pipe(gulp.dest(
 
 gulp.task('browser-sync', () => {
   browserSync({
-    port: 3000,
+    port: 8080,
     server: { baseDir: paths.html },
   });
   gulp.watch(`${paths.html}*.html`, ['reload']);
