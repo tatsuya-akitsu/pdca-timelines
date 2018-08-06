@@ -8,6 +8,9 @@ import 'react-datepicker/src/stylesheets/datepicker.scss';
 
 import logo from '../../images/logo_horizontal.svg';
 import addTask from '../../images/tasks-solid.svg';
+import angle from '../../images/angle_down.svg';
+import plus from '../../images/plus.svg';
+import minus from '../../images/minus.svg';
 
 class AddReport extends Component {
   constructor(props) {
@@ -67,6 +70,7 @@ class AddReport extends Component {
 
     actionDOM.classList.add('md-form-item')
     actionDOM.classList.add('form-action-item')
+    actionInput.classList.add('md-form-input')
     actionInput.setAttribute('type', 'text')
     actionInput.setAttribute('name', 'action')
     actionInput.setAttribute('placeholder', 'コードレビューを丁寧に進める')
@@ -75,11 +79,11 @@ class AddReport extends Component {
 
     addBtn.classList.add('md-btn-square')
     addBtn.classList.add('md-btn-plus')
-    addBtn.innerText = '+'
+    addBtn.innerHTML = `<img src=${plus} alt="" class="md-icon md-icon-plus" />`
     addBtn.addEventListener('click', this.handleAddActionInput)
     removeBtn.classList.add('md-btn-square')
     removeBtn.classList.add('md-btn-minus')
-    removeBtn.innerText = '-'
+    removeBtn.innerHTML = `<img src=${minus} alt="" class="md-icon md-icon-minus" />`
     removeBtn.addEventListener('click', this.handleRemoveActionInput)
 
     actionDOM.appendChild(actionInput)
@@ -123,6 +127,7 @@ class AddReport extends Component {
 
     taskDOM.classList.add('md-form-item')
     taskDOM.classList.add('form-task-item')
+    taskInput.classList.add('md-form-input')
     taskInput.setAttribute('type', 'text')
     taskInput.setAttribute('name', 'action')
     taskInput.setAttribute('placeholder', 'デザイン構築')
@@ -131,11 +136,11 @@ class AddReport extends Component {
 
     addBtn.classList.add('md-btn-square')
     addBtn.classList.add('md-btn-plus')
-    addBtn.innerText = '+'
+    addBtn.innerHTML = `<img src=${plus} alt="" class="md-icon md-icon-plus" />`
     addBtn.addEventListener('click', this.handleAddTaskInput)
     removeBtn.classList.add('md-btn-square')
     removeBtn.classList.add('md-btn-minus')
-    removeBtn.innerText = '-'
+    removeBtn.innerHTML = `<img src=${minus} alt="" class="md-icon md-icon-minus" />`
     removeBtn.addEventListener('click', this.handleRemoveActionInput)
 
     taskDOM.appendChild(taskInput)
@@ -191,18 +196,21 @@ class AddReport extends Component {
             <img src={logo} alt="RIOT" className="md-img md-img-logo" />
           </div>
         </header>
-        <section className="md-section reports-section">
+        <section className="md-section addReports-section">
           <div className="md-wrapper">
             <h2 className="md-title md-title-h2">PDCA新規作成</h2>
             <div className="md-inner">
               <form onSubmit={this.handleAddReports} className="md-form">
                 <div className="md-form-group">
                   <label>日付</label>
-                  <DatePicker
-                    dateFormat="YYYY/MM/DD"
-                    selected={this.state.date}
-                    onChange={this.handleOnDate}
-                  />
+                  <div className="datepicker-wrap">
+                    <DatePicker
+                      dateFormat="YYYY/MM/DD"
+                      selected={this.state.date}
+                      onChange={this.handleOnDate}
+                    />
+                    <img src={angle} alt="" className="md-icon md-icon-angle" />
+                  </div>
                 </div>
                 <div className="form-action-group">
                   <label>アクション</label>
@@ -211,11 +219,12 @@ class AddReport extends Component {
                       type="text"
                       name="action"
                       placeholder="コードレビューを丁寧に進める"
+                      className="md-form-input"
                       onChange={this.handleOnAction}
                       onBlur={this.handleOnAction}
                     />
-                    <button className="md-btn-square md-btn-plus" onClick={this.handleAddActionInput}>+</button>
-                    <button className="md-btn-square md-btn-minus" onClick={this.handleRemoveActionInput}>-</button>
+                    <button className="md-btn-square md-btn-plus" onClick={this.handleAddActionInput}><img src={plus} alt="" className="md-icon md-icon-plus" /></button>
+                    <button className="md-btn-square md-btn-minus" onClick={this.handleRemoveActionInput}><img src={minus} alt="" className="md-icon md-icon-minus" /></button>
                   </div>
                 </div>
                 <div className="form-task-group">
@@ -225,11 +234,12 @@ class AddReport extends Component {
                       type="text"
                       name="task"
                       placeholder="デザイン構築"
+                      className="md-form-input"
                       onChange={this.handleOnTask}
                       onBlur={this.handleOnTask}
                     />
-                    <button className="md-btn-square md-btn-plus" onClick={this.handleAddTaskInput}>+</button>
-                    <button className="md-btn-square md-btn-minus" onClick={this.handleRemoveTaskInput}>-</button>
+                    <button className="md-btn-square md-btn-plus" onClick={this.handleAddTaskInput}><img src={plus} alt="" className="md-icon md-icon-plus" /></button>
+                    <button className="md-btn-square md-btn-minus" onClick={this.handleRemoveTaskInput}><img src={minus} alt="" className="md-icon md-icon-minus" /></button>
                   </div>
                 </div>
                 <div className="md-form-group">

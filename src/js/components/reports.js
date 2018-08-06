@@ -46,7 +46,8 @@ class Reports extends Component {
               <ul className="report-list">
                 {reports.map(r => <ReportsItem report={r} key={r.key} selected={r.key === reportsId} />)}
               </ul>
-              <Link to="/reports/report/add">
+              {console.log(this.state.reports)}
+              <Link to="/reports/report/add" className="md-btn md-btn--style01">
                 <span className="md-btn-name">新規追加</span>
               </Link>
             </div>

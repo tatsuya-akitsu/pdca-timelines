@@ -1,99 +1,27 @@
-.sample-wrap {
+.md-section {
   width: 100%;
-  background-image: url('../images/main.png');
-  background-repeat: no-repeat;
-  background-size: 100%;
-  background-position: center;
 }
 
-.main-container {
-  padding: 1rem;
+.main-section {
+  height: calc(100vh - 8.2rem);
+  width: 100%;
 }
 
-.top-container {
-  height: 100vh;
-  overflow: hidden;
-  position: relative;
-
-  &::before {
-    @media screen and (max-width: 768px) {
-      border-bottom: 75rem solid #303f9f;
-      border-left: 20rem solid transparent;
-    }
-
-    border-bottom: 110rem solid #303f9f;
-    border-left: 61rem solid transparent;
-    bottom: 0;
-    content: '';
-    display: block;
-    position: absolute;
-    right: 0;
-    z-index: 10;
-  }
-}
-
-.signup-container {
-  &::before {
-    @media screen and (max-width: 768px) {
-      border-bottom: 75rem solid #303f9f;
-      border-left: 20rem solid transparent;
-    }
-
-    border-bottom: 110rem solid #303f9f;
-    border-left: 40rem solid transparent;
-    bottom: 0;
-    content: '';
-    display: block;
-    position: absolute;
-    right: 0;
-    z-index: 10;
-  }
-}
-
-.top-thumb {
-  @media screen and (max-width: 768px) {
-    bottom: 0;
-    width: 60%;
-  }
-
-  bottom: -10rem;
-  left: 0;
-  width: 80%;
-  z-index: 1;
-}
-
-.page-container {
-  background-color: #f3f7fc;
-  background-image: none;
-  padding: 0;
-}
-
-.top-wrap {
-  @media screen and (max-width: 768px) {
-    margin: 0 auto;
-    padding: 4rem 0 2rem;
-    position: relative;
-    width: 85%;
-  }
-
-  @media screen and (min-width: 769px) {
-    left: 35%;
-    position: absolute;
-    top: 35%;
-    transform: translate(-50%, -50%);
-  }
-
-  z-index: 100;
-}
-
-.signin-wrap {
+.md-wrapper {
   margin: 0 auto;
-  max-width: 475px;
-  padding: 5rem 0;
+  max-width: 1060px;
+  padding: 5rem 3rem;
   width: 100%;
 }
 
-.app-login {
-  margin: 5rem 0 0;
+.md-inner {
+  margin: 4rem 0 0;
   width: 100%;
+}
+
+.main-wrap {
+  align-content: center;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
 }

@@ -1,0 +1,133 @@
+.report-list {
+  width: 100%;
+}
+
+.reports-item {
+  margin: 2rem 0 0;
+
+  &:nth-of-type(1) {
+    margin: 0;
+  }
+}
+
+.reports-wrap {
+  align-items: center;
+  background-color: #f0f1f4;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  padding: 3.2rem;
+}
+
+.reports-panel-left {
+  padding-right: 3.2rem;
+  width: 20%;
+}
+
+.reports-panel-right {
+  border-left: 1px solid $base-wh;
+  padding-left: 3.2rem;
+  width: 80%;
+}
+
+.report-day {
+  font-family: $work;
+  font-size: 3rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.report-date {
+  font-family: $work;
+  font-size: 1.6rem;
+  font-weight: bold;
+  margin: 1.4rem 0 0;
+  text-align: center;
+}
+
+.report-task-wrap,
+.report-detail,
+.report-btn-wrap {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.report-task-wrap {
+  width: 60%;
+}
+
+.report-detail {
+  width: 20%;
+}
+
+.report-btn-wrap {
+  text-align: center;
+  width: 20%;
+
+  .md-btn--style03 {
+    margin: 2.4rem 0 0;
+
+    &:nth-of-type(1) {
+      margin: 0;
+    }
+  }
+}
+
+.md-tasks-title {
+  border-left: 5px solid #1d005d;
+  font-size: 2rem;
+  padding: .4rem .8rem;
+  text-align: left;
+}
+
+.report-task-list {
+  margin: 2rem 0 0;
+  width: 100%;
+
+  .report-task-item {
+    color: $base-bl;
+    font-family: $base-fontFamily;
+    font-size: 1.4rem;
+    margin: 1.5rem 0 0;
+    padding-left: 2rem;
+    position: relative;
+    text-align: left;
+
+    &:nth-of-type(1) {
+      margin: 0;
+    }
+
+    &::before {
+      background-color: #f27e7c;
+      border-radius: 50%;
+      content: '';
+      display: block;
+      height: 1rem;
+      left: 0;
+      position: absolute;
+      top: 50%;
+      transform: translate(0, -50%);
+      width: 1rem;
+    }
+  }
+}
+
+.report-detail-item {
+  margin: 1.6rem 0 0;
+
+  &:nth-of-type(1) {
+    margin: 0;
+  }
+
+  .md-title-small {
+    color: #a6b1c9;
+    font-family: $base-fontFamily;
+    font-size: 1.4rem;
+    text-align: center !important;
+  }
+
+  .md-num {
+    margin: 1rem 0 0;
+    text-align: center;
+  }
+}

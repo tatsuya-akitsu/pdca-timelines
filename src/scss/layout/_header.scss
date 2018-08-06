@@ -1,3 +1,13 @@
 .l-header {
   width: 100%;
 }
+
+.l-header-wrap {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  max-width: 1060px;
+  padding: 1.8rem 3rem;
+  width: 100%;
+}

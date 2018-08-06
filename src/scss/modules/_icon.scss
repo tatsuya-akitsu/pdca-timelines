@@ -1,14 +1,70 @@
-.md-icon_main {
-  @media screen and (max-width: 768px) {
-    width: 6rem;
-  }
-
-  display: block;
-  margin: 0 auto;
-  width: 10rem;
+.md-img {
+  max-width: 100%;
+  width: 100%;
 }
 
-.fab {
+.md-img-logo {
+  width: 14rem;
+}
+
+.md-icon {
   display: inline-block;
   vertical-align: middle;
+}
+
+.md-icon-signin {
+  margin: 0 1rem 0 0;
+  width: 1.8rem;
+}
+
+.md-icon-user {
+  margin: 0 1rem 0 0;
+  width: 1.8rem;
+}
+
+.md-icon-cloud {
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 1rem;
+  width: 6rem;
+}
+
+.fa-google {
+  color: #db4437;
+  display: inline-block;
+  margin: 0 1rem 0 0;
+  vertical-align: middle;
+}
+
+.fa-exclamation-triangle {
+  display: inline-block;
+  margin: 0 1rem 0 0;
+  vertical-align: middle;
+}
+
+.md-icon-edit {
+  margin: 0 1rem 0 0;
+  width: 1.5rem;
+}
+
+.md-icon-view {
+  margin: 0 1rem 0 0;
+  width: 1.5rem;
+}
+
+.md-icon-angle {
+  width: 5rem;
+}
+
+.md-icon-plus {
+  width: 1.9rem;
+}
+
+.md-icon-minus {
+  width: 1.9rem;
+}
+
+.md-icon-tasks {
+  margin: 0 1rem 0 0;
+  width: 2.7rem;
 }
