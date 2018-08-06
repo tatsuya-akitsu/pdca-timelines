@@ -96,20 +96,17 @@ class EditReport extends Component {
     const addBtn = document.createElement('button');
     const removeBtn = document.createElement('button')
 
-    actionDOM.classList.add('report-add-action')
-    actionInput.classList.add('md-form-input')
+    actionDOM.classList.add('report-add-action', 'md-form-input')
     actionInput.setAttribute('type', 'text')
     actionInput.setAttribute('name', 'action')
     actionInput.setAttribute('placeholder', 'コードレビューを丁寧に進める')
     actionInput.addEventListener('click', this.handleAddAction)
     actionInput.addEventListener('blur', this.handleAddAction)
 
-    addBtn.classList.add('md-btn-square')
-    addBtn.classList.add('md-btn-plus')
+    addBtn.classList.add('md-btn-square', 'md-btn-plus')
     addBtn.innerHTML = `<img src=${plus} alt="" class="md-icon md-icon-plus" />`
     addBtn.addEventListener('click', this.handleAddActionInput)
-    removeBtn.classList.add('md-btn-square')
-    removeBtn.classList.add('md-btn-minus')
+    removeBtn.classList.add('md-btn-square', 'md-btn-minus')
     removeBtn.innerHTML = `<img src=${minus} alt="" class="md-icon md-icon-minus" />`
     removeBtn.addEventListener('click', this.handleRemoveActionInput)
 
@@ -149,20 +146,17 @@ class EditReport extends Component {
     const addBtn = document.createElement('button');
     const removeBtn = document.createElement('button')
 
-    taskDOM.classList.add('report-add-task')
-    taskInput.classList.add('md-form-input')
+    taskDOM.classList.add('report-add-task', 'md-form-input')
     taskInput.setAttribute('type', 'text')
     taskInput.setAttribute('name', 'action')
     taskInput.setAttribute('placeholder', 'デザイン構築')
     taskInput.addEventListener('click', this.handleAddTask)
     taskInput.addEventListener('blur', this.handleAddTask)
 
-    addBtn.classList.add('md-btn-square')
-    addBtn.classList.add('md-btn-plus')
+    addBtn.classList.add('md-btn-square', 'md-btn-plus')
     addBtn.innerHTML = `<img src=${plus} alt="" class="md-icon md-icon-plus" />`
     addBtn.addEventListener('click', this.handleAddTaskInput)
-    removeBtn.classList.add('md-btn-square')
-    removeBtn.classList.add('md-btn-minus')
+    removeBtn.classList.add('md-btn-square', 'md-btn-minus')
     removeBtn.innerHTML = `<img src=${minus} alt="" class="md-icon md-icon-minus" />`
     removeBtn.addEventListener('click', this.handleRemoveTaskInput)
 
@@ -274,8 +268,7 @@ class EditReport extends Component {
     const addBtn= document.createElement('button')
     const removeBtn = document.createElement('button')
 
-    nextActDOM.classList.add('md-form-group')
-    nextActDOM.classList.add('form-action-item')
+    nextActDOM.classList.add('md-form-group', 'form-action-item')
     nextActInput.classList.add('md-form-input')
     nextActInput.setAttribute('type', 'text')
     nextActInput.setAttribute('name', 'nextAction')
@@ -283,12 +276,10 @@ class EditReport extends Component {
     nextActInput.addEventListener('click', this.handleNextAction)
     nextActInput.addEventListener('blur', this.handleNextAction)
 
-    addBtn.classList.add('md-btn-square')
-    addBtn.classList.add('md-btn-plus')
+    addBtn.classList.add('md-btn-square', 'md-btn-plus')
     addBtn.innerHTML = `<img src=${plus} alt="" class="md-icon md-icon-plus" />`
     addBtn.addEventListener('click', this.handleAddNextActInput)
-    removeBtn.classList.add('md-btn-square')
-    removeBtn.classList.add('md-btn-minus')
+    removeBtn.classList.add('md-btn-square', 'md-btn-minus')
     removeBtn.innerHTML = `<img src=${minus} alt="" class="md-icon md-icon-minus" />`
     removeBtn.addEventListener('click', this.handleRemoveNextActInput)
 

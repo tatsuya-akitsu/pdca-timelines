@@ -68,8 +68,7 @@ class AddReport extends Component {
     const addBtn = document.createElement('button')
     const removeBtn = document.createElement('button')
 
-    actionDOM.classList.add('md-form-item')
-    actionDOM.classList.add('form-action-item')
+    actionDOM.classList.add('md-form-item', 'form-action-item')
     actionInput.classList.add('md-form-input')
     actionInput.setAttribute('type', 'text')
     actionInput.setAttribute('name', 'action')
@@ -77,12 +76,10 @@ class AddReport extends Component {
     actionInput.addEventListener('click', this.handleOnAction)
     actionInput.addEventListener('blur', this.handleOnAction)
 
-    addBtn.classList.add('md-btn-square')
-    addBtn.classList.add('md-btn-plus')
+    addBtn.classList.add('md-btn-square', 'md-btn-square')
     addBtn.innerHTML = `<img src=${plus} alt="" class="md-icon md-icon-plus" />`
     addBtn.addEventListener('click', this.handleAddActionInput)
-    removeBtn.classList.add('md-btn-square')
-    removeBtn.classList.add('md-btn-minus')
+    removeBtn.classList.add('md-btn-square', 'md-btn-minus')
     removeBtn.innerHTML = `<img src=${minus} alt="" class="md-icon md-icon-minus" />`
     removeBtn.addEventListener('click', this.handleRemoveActionInput)
 
@@ -112,7 +109,7 @@ class AddReport extends Component {
   handleAddTaskInput(e) {
     e.preventDefault();
     // 入力された値を連想配列に追加
-    const { task } = this.state;
+    const { task } = this.state
     const newTask = {
       task: task
     }
@@ -125,21 +122,18 @@ class AddReport extends Component {
     const addBtn = document.createElement('button')
     const removeBtn = document.createElement('button')
 
-    taskDOM.classList.add('md-form-item')
-    taskDOM.classList.add('form-task-item')
+    taskDOM.classList.add('md-form-item', 'form-task-item')
     taskInput.classList.add('md-form-input')
     taskInput.setAttribute('type', 'text')
     taskInput.setAttribute('name', 'action')
     taskInput.setAttribute('placeholder', 'デザイン構築')
     taskInput.addEventListener('click', this.handleOnTask)
-    taskInput.addEventListener('blur', this.handleOnTsk)
+    taskInput.addEventListener('blur', this.handleOnTask)
 
-    addBtn.classList.add('md-btn-square')
-    addBtn.classList.add('md-btn-plus')
+    addBtn.classList.add('md-btn-square', 'md-btn-plus')
     addBtn.innerHTML = `<img src=${plus} alt="" class="md-icon md-icon-plus" />`
     addBtn.addEventListener('click', this.handleAddTaskInput)
-    removeBtn.classList.add('md-btn-square')
-    removeBtn.classList.add('md-btn-minus')
+    removeBtn.classList.add('md-btn-square', 'md-btn-minus')
     removeBtn.innerHTML = `<img src=${minus} alt="" class="md-icon md-icon-minus" />`
     removeBtn.addEventListener('click', this.handleRemoveActionInput)
 
@@ -241,6 +235,7 @@ class AddReport extends Component {
                     <button className="md-btn-square md-btn-plus" onClick={this.handleAddTaskInput}><img src={plus} alt="" className="md-icon md-icon-plus" /></button>
                     <button className="md-btn-square md-btn-minus" onClick={this.handleRemoveTaskInput}><img src={minus} alt="" className="md-icon md-icon-minus" /></button>
                   </div>
+                  {console.log(this.state)}
                 </div>
                 <div className="md-form-group">
                   <button className="md-btn md-btn--style02" onClick={this.handleSubmitReports}>

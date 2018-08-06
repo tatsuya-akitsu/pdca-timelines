@@ -276,6 +276,10 @@
     }
   }
 
+  .report-task-list {
+    margin-bottom: 1.5rem;
+  }
+
   .report-task-checkbox {
     text-align: left;
     margin: 1rem 0 0;
@@ -286,6 +290,7 @@
 
     .md-control {
       position: relative;
+      margin: 0;
       cursor: pointer;
 
       .md-task-name {
@@ -323,6 +328,64 @@
     width: 100%;
   }
 
+  .log-view-wrap {
+    width: 100%;
+  }
+
+  .log-view-box {
+    margin: 1.5rem 0 0;
+    font-size: 0;
+    width: 100%;
+
+    &:nth-of-type(1) {
+      margin: 0;
+    }
+  }
+
+  .md-time {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 0;
+
+    span {
+      display: inline-block;
+      vertical-align: middle;
+      padding: 0 .8rem 0 0;
+      font-family: $base-fontFamily;
+      font-size: 1.2rem;
+      color: $base-bl;
+
+      &:nth-last-of-type(1) {
+        padding: 0;
+      }
+    }
+  }
+
+  .md-log {
+    display: inline-block;
+    vertical-align: middle;
+    padding: 0 0 0 1rem;
+    font-family: $base-fontFamily;
+    font-size: 1.2rem;
+    color: $base-bl;
+  }
+
+  .md-cause {
+    margin: 1rem 0 0;
+    display: block;
+    font-family: $base-fontFamily;
+    font-size: 1.2rem;
+    color: $base-bl;
+  }
+
+  .md-retro {
+    margin: 1rem 0 0;
+    display: block;
+    font-family: $base-fontFamily;
+    font-size: 1.2rem;
+    color: $base-bl;
+  }
+
   .log-btn-wrap {
     margin: 2rem 0 0;
 
@@ -333,6 +396,14 @@
         margin: 0;
       }
     }
+  }
+
+  .report-add-task {
+    margin: 1rem 0 0;
+  }
+
+  .form-action-item {
+    margin: 1rem 0 0;
   }
 
   .set-task-wrap {
