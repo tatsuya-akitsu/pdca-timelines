@@ -2,6 +2,32 @@
   width: 100%;
 }
 
+.md-section--report {
+  margin: 0 auto;
+  max-width: 640px;
+  text-align: center;
+
+  .md-title {
+    text-align: left;
+  }
+
+  .md-btn {
+    margin: 4rem 0 0;
+  }
+}
+
+.md-section--reportsList {
+  text-align: center;
+
+  .md-title {
+    text-align: left;
+  }
+
+  .md-btn {
+    margin: 4rem 0 0;
+  }
+}
+
 .main-section {
   height: calc(100vh - 8.2rem);
   width: 100%;

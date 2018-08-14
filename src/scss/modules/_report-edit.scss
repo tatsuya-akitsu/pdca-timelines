@@ -1,0 +1,131 @@
+.md-form--editReport {
+  margin: 2rem 0 0;
+
+  label {
+    &.task-checkbox {
+      border-left: none;
+      padding-left: 0;
+    }
+  }
+
+  .md-form-item {
+    margin: 2rem 0 0 !important;
+  }
+
+  .md-title-h4 {
+    color: #9facb6;
+    display: block;
+    font-family: $base-fontFamily;
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    text-align: left;
+  }
+
+  .md-log-item {
+    .md-time {
+      display: inline-block;
+      font-size: 0;
+      text-align: left;
+      vertical-align: middle;
+
+      span {
+        color: $base-bl;
+        display: inline-block;
+        font-family: $base-fontFamily;
+        font-size: 1.2rem;
+        padding: 0 0.8rem 0 0;
+        vertical-align: middle;
+
+        &:nth-last-of-type(1) {
+          padding: 0;
+        }
+      }
+    }
+
+    .md-log {
+      color: $base-bl;
+      display: inline-block;
+      font-family: $base-fontFamily;
+      font-size: 1.2rem;
+      padding: 0 0 0 1rem;
+      vertical-align: middle;
+    }
+
+    .md-cause {
+      color: $base-bl;
+      display: block;
+      font-family: $base-fontFamily;
+      font-size: 1.2rem;
+      margin: 1rem 0 0;
+    }
+
+    .md-retro {
+      color: $base-bl;
+      display: block;
+      font-family: $base-fontFamily;
+      font-size: 1.2rem;
+      margin: 1rem 0 0;
+    }
+  }
+
+  .log-view-wrap {
+    width: 100%;
+  }
+
+  .log-view-box {
+    margin: 1.5rem 0 0;
+    text-align: left;
+
+    &:nth-of-type(1) {
+      margin: 0;
+    }
+  }
+
+  .createNew-log-view {
+    background-color: #fbfbfb;
+    border-radius: 5px;
+    margin: 2rem 0 1rem;
+    padding: 1.4rem;
+    position: relative;
+    text-align: left;
+
+    .md-title-h5 {
+      color: $base-bl;
+      font-weight: normal;
+      margin-bottom: 1.5rem;
+    }
+  }
+
+  .input-log-item {
+    margin: 3.5rem 0 0;
+
+    .md-title-h4 {
+      margin-bottom: 2.5rem;
+    }
+  }
+
+  .log-btn-wrap {
+    margin: 3.5rem 0 0;
+
+    .md-btn {
+      margin: 0 2rem 0 0;
+
+      &:nth-last-of-type(1) {
+        margin: 0 0 0 2rem;
+      }
+    }
+  }
+
+  .report-setBtn-wrap {
+    margin: 4rem 0 0;
+
+    .md-btn {
+      margin: 0 2rem 0 0;
+
+      &:nth-last-of-type(1) {
+        margin: 0 0 0 2rem;
+      }
+    }
+  }
+}

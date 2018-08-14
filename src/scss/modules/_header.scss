@@ -1,3 +1,30 @@
 .md-header {
   width: 100%;
 }
+
+.md-section-header {
+  background-color: #53519e;
+}
+
+.md-section-header--color01 {
+  background-color: #279fad;
+}
+
+.md-section-header--color02 {
+  background-color: #09883f;
+}
+
+.md-section-header-inner {
+  align-items: center;
+}
+
+.md-section-header--leftPanel,
+.md-section-header--rightPanel {
+  flex: 1;
+
+  .main-desc {
+    color: $base-wh;
+    margin: 3rem 0 0;
+    text-align: left;
+  }
+}

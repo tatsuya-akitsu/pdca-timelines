@@ -30,11 +30,11 @@
 }
 
 .btn--color02 {
-  background-color: #D0D0D0;
+  background-color: #d0d0d0;
 }
 
 .btn--color03 {
-  background-color: #9C00BF;
+  background-color: #9c00bf;
 }
 
 .md-btn-square {
@@ -48,11 +48,41 @@
 .md-btn-plus {
   background-color: $base-wh;
   border: 1px solid #905dff;
+
+  &::before {
+    background-image: url('../images/plus.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    content: '';
+    display: block;
+    height: 1.9rem;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 1.9rem;
+  }
 }
 
 .md-btn-minus {
   background-color: $base-wh;
   border: 1px solid #a6b1c9;
+
+  &::before {
+    background-image: url('../images/minus.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    content: '';
+    display: block;
+    height: 1.9rem;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 1.9rem;
+  }
 }
 
 .md-btn--styleGoogle {

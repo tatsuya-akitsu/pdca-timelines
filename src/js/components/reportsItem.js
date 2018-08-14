@@ -15,43 +15,37 @@ class ReportsItem extends Component {
     const { selected } = this.props;
     const { date, actions, tasks, nextActions, key } = this.props.report;
     return (
-      <li className={ selected ? 'reports-item is-selected' : 'reports-item' }>
+      <li className={ selected ? 'reports-item is-selected' : 'reports-item' } key={key}>
         <div className="reports-wrap">
-          <div className="reports-panel-left">
-            <p className="md-text report-date">{date}</p>
-            <div className="report-btn-wrap">
+          <div className="reports-card-head posR">
+            <div className="report-btn-wrap posA">
               <Link to={`/reports/report/${key}/edit`} className="md-btn md-btn--style03">
                 <img src={edit} alt="" className="md-icon md-icon-edit" />
-                <span className="md-btn-name">編集</span>
               </Link>
               <Link to={`/reports/report/${key}`} className="md-btn md-btn--style03 btn--color01">
                 <img src={list} alt="" className="md-icon md-icon-view" />
-                <span className="md-btn-name">閲覧</span>
               </Link>
             </div>
+            <div className="reports-status-icon posR">
+              {tasks.length > 2 && tasks.length < 4 ? 
+                <img src={night} alt="" className="md-icon md-icon-weather posA" />
+              : null}
+              {tasks.length > 5 && tasks.length < 6 ?
+                <img src={rain} alt="" className="md-icon md-icon-weather posA" />
+              : null}
+              {tasks.length > 7 ?
+                <img src={sun} alt="" className="md-icon md-icon-weather posA" />
+              : null}
+            </div>
+            <p className="md-text report-date">{date}</p>
           </div>
-          <div className="reports-panel-right">
-            {(() => {
-              if (task.length > 2) {
-                return (
-                  <img src={night} alt="" className="md-icon md-icon-weather" />
-                )
-              } else if (task.length > 5) {
-                return (
-                  <img src={rain} alt="" className="md-icon md-icon-weather" />
-                )
-              } else if (task.length > 7) {
-                return (
-                  <img src={sun} alt="" className="md-icon md-icon-weather" />
-                )
-              }
-            })()}
+          <div className="reports-card-body">
             <div className="report-task-wrap">
               <p className="md-title md-tasks-title">Tasks</p>
               <ul className="report-task-list">
-                {tasks.map((t, i) => {
+                {tasks.map((t) => {
                   return (
-                    <li className="report-task-item" key={i}>{t.task}</li>
+                    <li className="form-item">{t}</li>
                   );
                 })}
               </ul>
@@ -75,7 +69,19 @@ class ReportsItem extends Component {
                 <p className="md-title md-title-small">nextActions</p>
                 <div className="report-detail-box">
                   <img src={nextAction} alt="" className="md-icon md-icon-nextActBadge" />
-                  { nextActions > 0 ? <p className="md-num md-num--style01">{nextActions.length}</p> : <p className="md-num md-num--style01">0</p> }
+                  {(() => {
+                    if (nextActions) {
+                      if (nextActions.length > 0) {
+                        return (
+                          <p className="md-num md-num--style01">{nextActions.length}</p>
+                        )
+                      }
+                    } else {
+                      return (
+                        <p className="md-num md-num--style01">0</p>
+                      )
+                    }
+                  })()}
                 </div>
               </div>
             </div>

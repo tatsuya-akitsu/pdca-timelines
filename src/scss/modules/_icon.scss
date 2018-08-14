@@ -12,6 +12,12 @@
   vertical-align: middle;
 }
 
+.md-thumb {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+}
+
 .md-icon-signin {
   margin: 0 1rem 0 0;
   width: 1.8rem;
@@ -56,17 +62,13 @@
   width: 5rem;
 }
 
-.md-icon-plus {
-  width: 1.9rem;
-}
-
-.md-icon-minus {
-  width: 1.9rem;
-}
-
 .md-icon-tasks {
   margin: 0 1rem 0 0;
   width: 2.7rem;
+}
+
+.md-thumb--reportsTop {
+  width: 55%;
 }
 
 .md-icon-actionBadge,
@@ -77,24 +79,44 @@
 
 .md-icon-weather {
   display: block;
-  margin-left: 0;
-  margin-right: auto;
-  margin-bottom: 2rem;
-  width: 16rem;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 5rem;
 }
 
 .md-icon-checkbox {
-  position: relative;
   line-height: 1;
   margin: -.5px 1rem 0 0;
+  position: relative;
 
   &::before {
+    color: #f27e7c;
     content: "\f0c8";
     font-family: "Font Awesome 5 Free";
-    font-weight: normal;
-    color: #F27E7C;
     font-size: 1.7rem;
+    font-weight: normal;
   }
+}
+
+.md-icon-editIcon {
+  margin: 0 1rem 0 0;
+  width: 1.8rem;
+}
+
+.md-icon-time {
+  margin: 0 1rem 0 0;
+  width: 1.6rem;
+}
+
+.md-icon-cause {
+  margin: 0 1rem 0 0;
+  width: 1.6rem;
+}
+
+.md-icon-analysis {
+  margin: 0 1rem 0 0;
+  width: 1.6rem;
 }
 
 .md-icon-set {

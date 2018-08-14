@@ -4,10 +4,21 @@ import firebase from 'firebase';
 import moment from 'moment';
 
 import logo from '../../images/logo_horizontal.svg';
-import plus from '../../images/plus.svg';
-import minus from '../../images/minus.svg';
+import thumb from '../../images/reports_edit.svg';
+import edit from '../../images/edit--color02.svg';
+import time from '../../images/time.svg';
+import cause from '../../images/cause.svg';
+import analysis from '../../images/analysis.svg';
 import plusWhite from '../../images/plus_white.svg';
 import complete from '../../images/complete.svg';
+
+// 連想配列に値が存在するか否か確認
+function isEmpty(obj) {
+  for (let i in obj) {
+    return false;
+  }
+  return true;
+}
 
 class EditReport extends Component {
   constructor(props) {
@@ -22,6 +33,8 @@ class EditReport extends Component {
       task: '', // 新規追加するタスク
       nextActions: [],  // 新規追加するネクストアクションの連想配列
       nextAction: '', // 新規追加するネクストアクション
+      currentNextActions: [], // DBから取得したネクストアクション
+      currentLogs: [], // DBから取得したログ
       logs: [], // 新規追加する行動履歴の連想配列
       logItem: {
         start: null,  // 新規追加する行動履歴の開始時刻
@@ -85,29 +98,27 @@ class EditReport extends Component {
   handleAddActionInput(e) {
     e.preventDefault();
     // 入力された値を連想配列に追加
-    const { action } = this.state;
-    const addAction = { action: action }
-    this.state.newActions.push(addAction)
+    const action = this.state.action
+    this.state.newActions.push(action)
 
     // 新しいinputを生成
-    const actionWrap = document.querySelector('.report-add-wrap--action');
+    const actionWrap = document.querySelector('.md-item-add--action');
     const actionDOM = document.createElement('div');
     const actionInput = document.createElement('input')
     const addBtn = document.createElement('button');
     const removeBtn = document.createElement('button')
 
-    actionDOM.classList.add('report-add-action', 'md-form-input')
+    actionDOM.classList.add('report-add-action')
     actionInput.setAttribute('type', 'text')
     actionInput.setAttribute('name', 'action')
     actionInput.setAttribute('placeholder', 'コードレビューを丁寧に進める')
+    actionInput.classList.add('md-form-input')
     actionInput.addEventListener('click', this.handleAddAction)
     actionInput.addEventListener('blur', this.handleAddAction)
 
-    addBtn.classList.add('md-btn-square', 'md-btn-plus')
-    addBtn.innerHTML = `<img src=${plus} alt="" class="md-icon md-icon-plus" />`
+    addBtn.classList.add('md-btn-square', 'md-btn-plus', 'posR')
     addBtn.addEventListener('click', this.handleAddActionInput)
-    removeBtn.classList.add('md-btn-square', 'md-btn-minus')
-    removeBtn.innerHTML = `<img src=${minus} alt="" class="md-icon md-icon-minus" />`
+    removeBtn.classList.add('md-btn-square', 'md-btn-minus', 'posR')
     removeBtn.addEventListener('click', this.handleRemoveActionInput)
 
     actionDOM.appendChild(actionInput)
@@ -135,29 +146,27 @@ class EditReport extends Component {
   handleAddTaskInput(e) {
     e.preventDefault();
     // 入力された値を連想配列に追加
-    const { task } = this.state;
-    const addTask = { task: task }
-    this.state.newTasks.push(addTask)
+    const task = this.state.task
+    this.state.newTasks.push(task)
 
     // 新しいinputを生成
-    const taskWrap = document.querySelector('.report-add-wrap--task');
+    const taskWrap = document.querySelector('.md-item-add--task');
     const taskDOM = document.createElement('div');
     const taskInput = document.createElement('input')
     const addBtn = document.createElement('button');
     const removeBtn = document.createElement('button')
 
-    taskDOM.classList.add('report-add-task', 'md-form-input')
+    taskDOM.classList.add('report-add-task')
     taskInput.setAttribute('type', 'text')
     taskInput.setAttribute('name', 'action')
     taskInput.setAttribute('placeholder', 'デザイン構築')
+    taskInput.classList.add('md-form-input')
     taskInput.addEventListener('click', this.handleAddTask)
     taskInput.addEventListener('blur', this.handleAddTask)
 
-    addBtn.classList.add('md-btn-square', 'md-btn-plus')
-    addBtn.innerHTML = `<img src=${plus} alt="" class="md-icon md-icon-plus" />`
+    addBtn.classList.add('md-btn-square', 'md-btn-plus', 'posR')
     addBtn.addEventListener('click', this.handleAddTaskInput)
-    removeBtn.classList.add('md-btn-square', 'md-btn-minus')
-    removeBtn.innerHTML = `<img src=${minus} alt="" class="md-icon md-icon-minus" />`
+    removeBtn.classList.add('md-btn-square', 'md-btn-minus', 'posR')
     removeBtn.addEventListener('click', this.handleRemoveTaskInput)
 
     taskDOM.appendChild(taskInput)
@@ -185,7 +194,6 @@ class EditReport extends Component {
   handleStartLog(e) {
     e.preventDefault();
     this.setState({ inputStart: moment().format('hh:mm') })
-    this.state.logItem.start = moment().format('hh:mm')
   }
 
   handleEndLog(e) {
@@ -257,36 +265,11 @@ class EditReport extends Component {
   handleAddNextActInput(e) {
     e.preventDefault();
     // 入力された値を連想配列に追加
-    const { nextAction } = this.state;
-    const newNextAction = { nextAction: nextAction }
-    this.state.nextActions.push(newNextAction)
-
-    // 新しいinputの生成
-    const nextActWrap = document.querySelector('.report-add-wrap--next')
-    const nextActDOM = document.createElement('div')
-    const nextActInput = document.createElement('input')
-    const addBtn= document.createElement('button')
-    const removeBtn = document.createElement('button')
-
-    nextActDOM.classList.add('md-form-group', 'form-action-item')
-    nextActInput.classList.add('md-form-input')
-    nextActInput.setAttribute('type', 'text')
-    nextActInput.setAttribute('name', 'nextAction')
-    nextActInput.setAttribute('placeholder', 'コミュニケーションエラーを回避する')
-    nextActInput.addEventListener('click', this.handleNextAction)
-    nextActInput.addEventListener('blur', this.handleNextAction)
-
-    addBtn.classList.add('md-btn-square', 'md-btn-plus')
-    addBtn.innerHTML = `<img src=${plus} alt="" class="md-icon md-icon-plus" />`
-    addBtn.addEventListener('click', this.handleAddNextActInput)
-    removeBtn.classList.add('md-btn-square', 'md-btn-minus')
-    removeBtn.innerHTML = `<img src=${minus} alt="" class="md-icon md-icon-minus" />`
-    removeBtn.addEventListener('click', this.handleRemoveNextActInput)
-
-    nextActDOM.appendChild(nextActInput)
-    nextActDOM.appendChild(addBtn)
-    nextActDOM.appendChild(removeBtn)
-    nextActWrap.appendChild(nextActDOM)
+    const nextAction = this.state.nextAction
+    this.state.nextActions.push(nextAction)
+    const input = document.getElementsByClassName('md-form-input--next')
+    input[0].value = ""
+    this.setState({ nextAction: '' })
   }
 
   handleRemoveNextActInput(e) {
@@ -309,27 +292,48 @@ class EditReport extends Component {
   fetchReports(reportId) {
     this.fbReportsRef = this.db.ref('/reports/' + reportId);
     this.fbReportsRef.once("value").then(snapshot => {
-      const { date, actions, tasks } = snapshot.val()
+      const { date, actions, tasks, logs, nextActions } = snapshot.val()
+      console.log(snapshot.val())
       this.setState({
         date: date,
         currentActions: actions,
-        currentTasks: tasks
+        currentTasks: tasks,
+        currentLogs: logs,
+        currentNextActions: nextActions
       })
     });
   }
 
   handleSetReport(e) {
     e.preventDefault();
-    const setReportRef = this.db.ref('/reports').push();
-    const editLog = {
-      actions: this.state.currentActions.concat(this.state.newActions),
-      tasks: this.state.currentTasks.concat(this.state.newTasks),
-      logs: this.state.logs,
-      retro: this.state.allRetro,
-      nextActions: this.state.nextActions
+    const { reportId } = this.props.params;
+    let newLogs = [];
+    let newNextActions = [];
+    const editActions = this.state.currentActions.concat(this.state.newActions)
+    const editTasks = this.state.currentTasks.concat(this.state.newTasks)
+
+    if (isEmpty(this.state.currentLogs) === false) {
+      newLogs = this.state.currentLogs.concat(this.state.logs)
+    } else {
+      newLogs = this.state.logs
     }
 
-    setReportRef.update(editLog).then(() => {
+    if (isEmpty(this.state.currentNextActions) === false) {
+      newNextActions = this.state.currentNextActions.concat(this.state.newActions)
+    } else {
+      newNextActions = this.state.nextActions
+    }
+
+    const editLog = {
+      date: this.state.date,
+      actions: editActions,
+      tasks: editTasks,
+      logs: newLogs,
+      retro: this.state.allRetro,
+      nextActions: newNextActions
+    }
+
+    this.db.ref('/reports/' + reportId).set(editLog).then(() => {
       console.log('Report edit completed.')
       hashHistory.push('/reports')
     })
@@ -337,23 +341,44 @@ class EditReport extends Component {
 
   handleCompReport(e) {
     e.preventDefault();
+
+    const { reportId } = this.props.params
     const setReportRef = this.db.ref('/reports').push();
-    const editLog = {
-      actions: this.state.currentActions.concat(this.state.newActions),
-      tasks: this.state.currentTasks.concat(this.state.newTasks),
-      logs: this.state.logs,
-      retro: this.state.allRetro,
-      nextActions: this.state.nextActions
+
+    let newLogs = [];
+    let newNextActions = [];
+    const editActions = this.state.currentActions.concat(this.state.newActions)
+    const editTasks = this.state.currentTasks.concat(this.state.newTasks)
+
+    if (isEmpty(this.state.currentLogs) === false) {
+      newLogs = this.state.currentLogs.concat(this.state.logs)
+    } else {
+      newLogs = this.state.logs
     }
 
-    setReportRef.update(editLog).then(() => {
+    if (isEmpty(this.state.currentNextActions) === false) {
+      newNextActions = this.state.currentNextActions.concat(this.state.newActions)
+    } else {
+      newNextActions = this.state.nextActions
+    }
+
+    const editLog = {
+      date: this.state.date,
+      actions: editActions,
+      tasks: editTasks,
+      logs: newLogs,
+      retro: this.state.allRetro,
+      nextActions: newNextActions
+    }
+
+    this.db.ref('/reports/' + reportId).set(editLog).then(() => {
       console.log('Report edit completed.')
       hashHistory.push(`/reports/report/${setReportRef.key}`)
     })
   }
 
   render() {
-    const { date, currentActions, currentTasks } = this.state;
+    const { date, currentActions, currentTasks, currentLogs, currentNextActions } = this.state;
     const logs = this.state.logs;
     return (
       <div id="l-contain">
@@ -362,22 +387,39 @@ class EditReport extends Component {
             <img src={logo} alt="RIOT" className="md-img md-img-logo" />
           </div>
         </header>
-        <section className="md-section reportsDetail-section">
+        <section className="md-section-header md-section-header--color02">
           <div className="md-wrapper">
-            <h2 className="md-title md-title-h2">PDCA編集</h2>
+            <div className="md-section-header-inner fleB">
+              <div className="md-section-header--leftPanel">
+                <h2 className="md-title md-title-h2--small">PDCA編集</h2>
+                <p className="md-text main-desc">
+                  作成したPDCAに実際に行動履歴を付けていきます。<br />
+                  ひとつひとつのタスクも細分化し、どの作業にどれくらいかかったのか、何故その作業を行ったか、その結果どうなったかなど丁寧につけていきましょう。<br />
+                  最後に全体の振り返りと、翌日への意識する項目を入力して完了です。
+                </p>
+              </div>
+              <div className="md-section-header--rightPanel">
+                <img src={thumb} alt="" className="md-thumb md-thumb--reportsTop" />
+              </div>
+            </div>
+          </div>
+        </section>
+        <section className="md-section md-section--report">
+          <div className="md-wrapper">
+            <h2 className="md-title md-title-h2--small">PDCA編集</h2>
             <div className="md-inner">
               <h3 className="md-title md-title-h3">{date}</h3>
-              <form className="md-form">
+              <form className="md-form md-form--report md-form--editReport">
                 <div className="md-form-group">
                   <label>アクション</label>
-                  <ul className="report-action-list">
+                  <ul className="form-list">
                     {currentActions.map((a, i) => {
                       return (
-                        <li className="report-action-item" key={i}>{a.action}</li>
+                        <li className="form-item" key={i}>{a}</li>
                       )
                     })}
                   </ul>
-                  <div className="report-add-wrap--action">
+                  <div className="md-form-item md-item-add--action">
                     <div className="report-add-action">
                       <input
                         type="text"
@@ -387,29 +429,29 @@ class EditReport extends Component {
                         onChange={this.handleAddAction}
                         onBlur={this.handleAddAction}
                       />
-                      <button className="md-btn-square md-btn-plus" onClick={this.handleAddActionInput}><img src={plus} alt="" className="md-icon md-icon-plus" /></button>
-                      <button className="md-btn-square md-btn-minus" onClick={this.handleRemoveActionInput}><img src={minus} alt="" className="md-icon md-icon-minus" /></button>
+                      <button className="md-btn-square md-btn-plus posR" onClick={this.handleAddActionInput} />
+                      <button className="md-btn-square md-btn-minus posR" onClick={this.handleRemoveActionInput} />
                     </div>
                   </div>
                 </div>
                 <div className="md-form-group">
                   <label>タスク</label>
-                  <ul className="report-task-list">
+                  <ul className="form-list">
                     {currentTasks.map((t, i) => {
                       return (
-                        <div className="report-task-checkbox" key={i}>
-                          <label className="md-control">
+                        <div className="task-checkbox-wrap" key={i}>
+                          <label className="task-checkbox">
                             <input type="checkbox" name="task" value={i} />
                             <span className="md-icon md-icon-checkbox" />
                             <span className="md-text md-task-name">
-                              {t.task}
+                              {t}
                             </span>
                           </label>
                         </div>
                       )
                     })}
                   </ul>
-                  <div className="report-add-wrap--task">
+                  <div className="md-form-item md-item-add--task">
                     <div className="report-add-task">
                       <input
                         type="text"
@@ -419,8 +461,8 @@ class EditReport extends Component {
                         onChange={this.handleAddTask}
                         onBlur={this.handleAddTask}
                       />
-                      <button className="md-btn-square md-btn-plus" onClick={this.handleAddTaskInput}><img src={plus} alt="" className="md-icon md-icon-plus" /></button>
-                      <button className="md-btn-square md-btn-minus" onClick={this.handleRemoveTaskInput}><img src={minus} alt="" className="md-icon md-icon-minus" /></button>
+                      <button className="md-btn-square md-btn-plus posR" onClick={this.handleAddTaskInput} />
+                      <button className="md-btn-square md-btn-minus posR" onClick={this.handleRemoveTaskInput} />
                     </div>
                   </div>
                 </div>
@@ -428,6 +470,22 @@ class EditReport extends Component {
                   <label>行動履歴</label>
                   <div className="md-log-item">
                     <div className="log-view-wrap">
+                    {isEmpty(currentLogs) === false ? 
+                      currentLogs.map((l, i) => {
+                        return (
+                          <div className="log-view-box" key={i}>
+                            <p className="md-time">
+                              <span className="md-time--start">{l.start}</span>
+                              <span className="md-time--span">〜</span>
+                              <span className="md-time--end">{l.end}</span>
+                            </p>
+                            <p className="md-log">{l.log}</p>
+                            <p className="md-cause">{l.cause}</p>
+                            <p className="md-retro">{l.retro}</p>
+                          </div>
+                        )
+                      })
+                    : null}
                     {logs.map((item, i) => {
                       return (
                         <div className="log-view-box" key={i}>
@@ -443,7 +501,24 @@ class EditReport extends Component {
                       )
                     })}
                     </div>
-                    <div className="md-add-log-wrap">
+                    <div className="log-add-wrap">
+                      <div className="createNew-log-view">
+                        <div className="createNew-log-view-inner">
+                          <h5 className="md-title md-title-h5">
+                            <img src={edit} alt="" className="md-icon md-icon-editIcon" />
+                            編集中
+                          </h5>
+                          <p className="md-time">
+                            <img src={time} alt="" className="md-icon md-icon-time" />
+                            <span className="md-time--start">{this.state.inputStart}</span>
+                            <span className="md-time--span">〜</span>
+                            <span className="md-time--end">{this.state.inputEnd}</span>
+                          </p>
+                          <p className="md-log">{this.state.inputLog}</p>
+                          <p className="md-cause"><img src={cause} alt="" className="md-icon md-icon-cause" />{this.state.inputCause}</p>
+                          <p className="md-retro"><img src={analysis} alt="" className="md-icon md-icon-analysis" />{this.state.inputRetro}</p>
+                        </div>
+                      </div>
                       <input
                         type="text"
                         name="log"
@@ -452,7 +527,7 @@ class EditReport extends Component {
                         onChange={this.handleAddLog}
                         onBlur={this.handleResetLogInput}
                       />
-                      <div className="md-cause-wrap">
+                      <div className="input-log-item">
                         <h4 className="md-title md-title-h4">行動理由</h4>
                         <textarea
                           name="cause"
@@ -461,7 +536,7 @@ class EditReport extends Component {
                           onBlur={this.handleResetCauseTextArea}
                         />
                       </div>
-                      <div className="md-retrospective-wrap">
+                      <div className="input-log-item">
                         <h4 className="md-title md-title-h4">振り返り</h4>
                         <textarea
                           name="retrospective"
@@ -487,22 +562,35 @@ class EditReport extends Component {
                 </div>
                 <div className="md-form-group">
                   <label>次回に向けたアクション</label>
-                  <div className="report-add-wrap--next">
-                    <div className="md-form-group form-action-item">
+                  {(() => {
+                    if (currentNextActions) {
+                      <ul className="form-list">
+                        {currentNextActions.map((n, i) => {
+                          return (
+                            <li className="form-item" key={i}>
+                              <span className="form-item-name">{n}</span>
+                              <button className="md-btn-square md-btn-minus posR" onClick={this.handleRemoveNextActInput} />
+                            </li>
+                          )
+                        })}
+                      </ul>
+                    }
+                  })()}
+                  <div className="md-form-item md-form-item--next">
+                    <div className="report-add-next">
                       <input
                         type="text"
                         name="action"
                         placeholder="コードレビューを丁寧に進める"
-                        className="md-form-input"
+                        className="md-form-input md-form-input--next"
                         onChange={this.handleNextAction}
                         onBlur={this.handleNextAction}
                       />
-                      <button className="md-btn-square md-btn-plus" onClick={this.handleAddNextActInput}><img src={plus} alt="" className="md-icon md-icon-plus" /></button>
-                      <button className="md-btn-square md-btn-minus" onClick={this.handleRemoveNextActInput}><img src={minus} alt="" className="md-icon md-icon-minus" /></button>
+                      <button className="md-btn-square md-btn-plus posR" onClick={this.handleAddNextActInput} />
                     </div>
                   </div>
                 </div>
-                <div className="set-task-wrap">
+                <div className="report-setBtn-wrap">
                   <Link to="/reports" className="md-btn md-btn--style02" onClick={this.handleSetReport}>
                     <img src={plusWhite} alt="" className="md-icon md-icon-set" />
                     <span className="md-btn-name">Set task</span>

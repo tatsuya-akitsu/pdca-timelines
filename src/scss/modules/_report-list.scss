@@ -1,0 +1,94 @@
+/* report list */
+.form-list {
+  width: 100%;
+}
+
+.form-item {
+  color: $base-bl;
+  font-family: $base-fontFamily;
+  font-size: 1.4rem;
+  margin: 1.5rem 0 0;
+  padding-left: 2rem;
+  position: relative;
+  text-align: left;
+
+  &:nth-of-type(1) {
+    margin: 0;
+  }
+
+  &::before {
+    background-color: #f27e7c;
+    border-radius: 50%;
+    content: '';
+    display: block;
+    height: 1rem;
+    left: 0;
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    width: 1rem;
+  }
+}
+
+.form-item-name {
+  color: $base-bl;
+  font-family: $base-fontFamily;
+  font-size: 1.4rem;
+}
+
+.md-btn-minus {
+  margin: 0 0 0 2rem;
+}
+
+/* reports list */
+.report-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.reports-item {
+  margin-bottom: 2rem;
+  width: 40%;
+}
+
+.report-task-list {
+  margin: 2rem 0 0;
+  width: 100%;
+}
+
+/* edit report */
+.task-checkbox-wrap {
+  margin: 1rem 0 0;
+  text-align: left;
+
+  &:nth-of-type(1) {
+    margin: 0;
+  }
+
+  .task-checkbox {
+    cursor: pointer;
+    margin: 0;
+    position: relative;
+
+    .md-task-name {
+      font-size: 1.4rem;
+      font-weight: normal;
+    }
+
+    input {
+      display: none;
+    }
+
+    input:checked + .md-icon-checkbox::before {
+      color: #f27e7c;
+      content: "\f14a";
+      font-weight: bold;
+    }
+
+    input:checked ~ .md-task-name {
+      text-decoration: line-through;
+    }
+  }
+}

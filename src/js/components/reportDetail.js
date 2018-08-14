@@ -26,24 +26,23 @@ class ReportDetail extends Component {
   fetchReports(reportId) {
     this.fbReportsRef = this.db.ref('/reports/' + reportId);
     this.fbReportsRef.once("value").then(snapshot => {
-      console.log(snapshot.val())
-      // const { date, actions, tasks, nextActions, logs, allRetro } = snapshot.val()
-      // this.setState({
-      //   date: date,
-      //   actions: actions,
-      //   tasks: tasks,
-      //   nextActions: nextActions,
-      //   logs: logs,
-      //   allRetro: allRetro
-      // })
+      const { date, actions, tasks, nextActions, logs, allRetro } = snapshot.val()
+      this.setState({
+        date: date,
+        actions: actions,
+        tasks: tasks,
+        nextActions: nextActions,
+        logs: logs,
+        allRetro: allRetro
+      })
     });
   }
 
   render() {
     return (
       <p>
+        {console.log(this.state)}
         レポート詳細だよ<br />
-        {this.state}
       </p>
     );
   }
