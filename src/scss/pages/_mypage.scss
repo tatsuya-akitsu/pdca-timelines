@@ -1,0 +1,37 @@
+.md-section--mypage {
+  .md-wrapper {
+    margin: 0 auto;
+    max-width: 780px;
+  }
+
+  .md-title-h2--small {
+    color: $base-pu;
+  }
+}
+
+.user-profile-img {
+  border-radius: 5px;
+  height: 30%;
+  width: 30%;
+}
+
+.profile-about {
+  padding: 0 0 0 3rem;
+  width: 70%;
+}
+
+.profile-info {
+  background-color: #f1f1f1;
+  margin: 3rem 0 0;
+  padding: 1.2rem;
+
+  .profile-label {
+    font-size: 1.4rem;
+    font-weight: bold;
+  }
+
+  .profile-email {
+    font-size: 1.4rem;
+    margin: 1.5rem 0 0;
+  }
+}
