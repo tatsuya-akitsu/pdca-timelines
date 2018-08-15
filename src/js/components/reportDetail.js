@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { Link } from 'react-router';
 import firebase from 'firebase';
 
-import logo from '../../images/logo_horizontal.svg';
-
 class ReportDetail extends Component {
   constructor(props) {
     super(props);

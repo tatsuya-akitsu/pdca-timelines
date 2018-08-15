@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import firebase from 'firebase';
+import GlobalHeader from './header';
 import ReportsItem from './reportsItem';
 
-import logo from '../../images/logo_horizontal.svg';
 import thumb from '../../images/reports_top.svg';
 
 class Reports extends Component {
@@ -35,11 +35,7 @@ class Reports extends Component {
     const { reports } = this.state;
     return (
       <div id="l-contain">
-        <header className="l-header md-header">
-          <div className="l-header-wrap">
-            <img src={logo} alt="RIOT" className="md-img md-img-logo" />
-          </div>
-        </header>
+        <GlobalHeader />
         <section className="md-section md-section--reportsList">
           <section className="md-section-header">
             <div className="md-wrapper">

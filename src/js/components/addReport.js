@@ -6,6 +6,7 @@ import DatePicker from 'react-datepicker';
 
 import 'react-datepicker/src/stylesheets/datepicker.scss';
 
+import GlobalHeader from './header';
 import logo from '../../images/logo_horizontal.svg';
 import thumb from '../../images/reports_add.svg';
 import addTask from '../../images/tasks-solid.svg';
@@ -133,11 +134,7 @@ class AddReport extends Component {
   render() {
     return (
       <div id="l-contain">
-        <header className="l-header md-header">
-          <div className="l-header-wrap">
-            <img src={logo} alt="RIOT" className="md-img md-img-logo" />
-          </div>
-        </header>
+        <GlobalHeader />
         <section className="md-section-header md-section-header--color01">
           <div className="md-wrapper">
             <div className="md-section-header-inner fleB">

@@ -3,7 +3,7 @@ import { Link, hashHistory } from 'react-router';
 import firebase from 'firebase';
 import moment from 'moment';
 
-import logo from '../../images/logo_horizontal.svg';
+import GlobalHeader from './header';
 import thumb from '../../images/reports_edit.svg';
 import edit from '../../images/edit--color02.svg';
 import time from '../../images/time.svg';
@@ -382,11 +382,7 @@ class EditReport extends Component {
     const logs = this.state.logs;
     return (
       <div id="l-contain">
-        <header className="l-header md-header">
-          <div className="l-header-wrap">
-            <img src={logo} alt="RIOT" className="md-img md-img-logo" />
-          </div>
-        </header>
+        <GlobalHeader />
         <section className="md-section-header md-section-header--color02">
           <div className="md-wrapper">
             <div className="md-section-header-inner fleB">
