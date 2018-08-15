@@ -184,7 +184,7 @@ class Signup extends Component {
               <form onSubmit={this.handleOnSubmit} className="md-form">
                 {this.state.errors.map((err, i) => {
                   return (
-                    <p className={errClass} key={i}><i class="fas fa-exclamation-triangle"></i>{err}</p>
+                    <p className={errClass} key={i}><i className="fas fa-exclamation-triangle"></i>{err}</p>
                   )
                 })}
                 <div className="md-form-group">
