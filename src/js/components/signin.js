@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 import { Link, hashHistory } from 'react-router';
 import firebase from 'firebase';
 
-import logo from '../../images/logo_horizontal.svg';
+import GlobalHeader from './header';
 import signin from '../../images/signin.svg';
-import user from '../../images/user.svg';
 
 class Signin extends Component {
   constructor(props) {
@@ -137,15 +136,7 @@ class Signin extends Component {
 
     return (
       <div className="l-main">
-        <header className="l-header md-header">
-          <div className="l-header-wrap">
-            <img src={logo} alt="RIOT" className="md-img md-img-logo" />
-            <Link to="/signup" className="md-btn md-btn--style01">
-              <img src={user} alt="signin" className="md-icon md-icon-signin" />
-              <span className="md-btn-name">登録</span>
-            </Link>
-          </div>
-        </header>
+        <GlobalHeader btn="signup" />
         <section className="md-section signin-section">
           <div className="md-wrapper">
             <h2 className="md-title md-title-h2">サインイン</h2>

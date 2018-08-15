@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import { Link, hashHistory } from 'react-router';
 import firebase from 'firebase';
 
-import logo from '../../images/logo_horizontal.svg';
-import signin from '../../images/signin.svg';
+import GlobalHeader from './header';
 
 class Main extends Component {
   constructor(props) {
@@ -32,18 +31,11 @@ class Main extends Component {
       })
     })
   }
+
   render() {
     return (
       <div className="l-main">
-        <header className="l-header md-header">
-          <div className="l-header-wrap">
-            <img src={logo} alt="RIOT" className="md-img md-img-logo" />
-            <Link to="/signin" className="md-btn md-btn--style01">
-              <img src={signin} alt="signin" className="md-icon md-icon-signin" />
-              <span className="md-btn-name">サインイン</span>
-            </Link>
-          </div>
-        </header>
+        <GlobalHeader btn="signin" />
         <section className="main-section">
           <div className="md-wrapper main-wrap">
             <div className="main-thumb" />
