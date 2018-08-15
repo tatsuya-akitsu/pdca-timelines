@@ -1,131 +1,93 @@
-.md-headline {
-  line-height: 1;
-}
-
-.md-headline_h1 {
-  @media screen and (max-width: 768px) {
-    font-size: 3rem;
-  }
-
-  font-family: $lato;
-  font-size: 4rem;
-  letter-spacing: 2px;
-  text-align: center;
-}
-
-.md-headline_h3 {
-  @media screen and (max-width: 768px) {
-    font-size: 1.8rem;
-  }
-
+.md-title {
+  color: $base-bl;
   font-family: $base-fontFamily;
-  font-size: 1.6rem;
+  font-weight: bold;
+}
+
+.md-title-h2 {
+  font-size: 4rem;
+}
+
+.md-title-h2--small {
+  color: $base-wh;
+  font-size: 2.8rem;
   letter-spacing: 1px;
+}
+
+.md-title-h3 {
+  font-size: 2.6rem;
+  text-align: left;
+}
+
+.md-title-h4 {
+  font-size: 2rem;
+  text-align: left;
+}
+
+.md-title-h5 {
+  font-size: 1.8rem;
   text-align: left;
 }
 
 .md-text {
+  color: $base-bl;
+  font-family: $base-fontFamily;
+  line-height: 1.6;
+}
+
+.md-text--small {
+  font-size: 1.25rem;
+}
+
+.err-msg {
+  background-color: #f2cdcd;
+  border: 1px solid #d32f2f;
+  border-radius: 3px;
+  display: none;
   font-size: 1.4rem;
+  margin-top: 1rem;
+  padding: 1rem 1.6rem;
   text-align: left;
-}
 
-.md-text_small {
-  @media screen and (max-width: 768px) {
-    font-size: .7rem;
+  &:nth-of-type(1) {
+    margin-top: 0;
   }
 
-  font-size: 1.2rem;
+  &:nth-last-of-type(1) {
+    margin-bottom: 2rem;
+  }
 }
 
-.signup-text {
-  @media screen and (max-width: 768px) {
-    font-size: 1.3rem;
-  }
+.md-link {
+  color: $base-pu;
+  font-family: $base-fontFamily;
+  text-decoration: underline;
+}
 
+.md-btn-name {
+  color: $base-wh;
+  display: inline-block;
   font-size: 1.4rem;
-  margin: 1rem 0 0;
-  text-align: center;
-
-  a {
-    text-decoration: underline;
-
-    &:hover {
-      text-decoration: none;
-    }
-  }
-}
-
-.copyright {
-  font-size: .8rem;
-  text-align: center;
-}
-
-.dropzone-desc {
-  color: #ebebeb;
-  display: block;
-  font-family: $base-fontFamily;
-  font-size: 1.6rem;
-  left: 50%;
-  text-align: center;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: 100%;
-  z-index: 10;
-}
-
-.room-name {
-  @media screen and (max-width: 768px) {
-    font-size: 1.3rem;
-  }
-
-  color: $base-bl;
-  font-family: $base-fontFamily;
-  font-size: 1.45rem;
   font-weight: bold;
-  text-decoration: none;
+  vertical-align: middle;
 }
 
-.room-desc {
-  @media screen and (max-width: 768px) {
-    font-size: 1rem;
-  }
+.main-desc {
+  font-size: 1.4rem;
+}
 
-  color: #3e3e3e;
-  font-family: $base-fontFamily;
+.md-num {
+  color: $base-wh;
+  font-family: $work;
+}
+
+.md-num--style01 {
+  background-color: $base-pu;
+  border-radius: 50%;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, .2);
   font-size: 1.2rem;
-  font-weight: normal;
-  margin: .8rem 0 0;
-}
-
-.usr-name {
-  @media screen and (max-width: 768px) {
-    font-size: 1.3rem;
-  }
-
-  color: $base-bl;
-  font-family: $base-fontFamily;
-  font-size: 1.6rem;
-  font-weight: bold;
-}
-
-.msg-time {
-  @media screen and (max-width: 768px) {
-    font-size: 1rem;
-  }
-
-  color: #ddd;
-  font-family: $lato;
-  font-size: 1.2rem;
-}
-
-.msg-text {
-  @media screen and (max-width: 768px) {
-    font-size: 1.3rem;
-  }
-
-  color: $base-bl;
-  font-family: $base-fontFamily;
-  font-size: 1.45rem;
-  margin: 1.6rem 0 0;
-  text-align: left;
+  height: 2.4rem;
+  line-height: 2.4rem;
+  text-align: center;
+  width: 2.4rem;
 }

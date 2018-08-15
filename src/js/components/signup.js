@@ -47,11 +47,16 @@ class Signup extends Component {
   handleOnPasswordConfirm(e) {
     e.preventDefault();
     const passwordInput = window.document.querySelector('.input-password');
+    const icon = window.document.querySelector('.far')
     if (this.state.passView === false) {
-      passwordInput.setAttribute('type', 'test')
+      passwordInput.setAttribute('type', 'text')
+      icon.classList.remove('fa-eye')
+      icon.classList.add('fa-eye-slash')
       this.setState({ passView: true })
     } else {
       passwordInput.setAttribute('type', 'password')
+      icon.classList.remove('fa-eye-slash')
+      icon.classList.add('fa-eye')
       this.setState({ passView: false })
     }
   }
@@ -173,7 +178,7 @@ class Signup extends Component {
             </Link>
           </div>
         </header>
-        <section className="md-section signin-section">
+        <section className="md-section signup-section">
           <div className="md-wrapper">
             <h2 className="md-title md-title-h2">
               より分かりやすく<br />
@@ -184,9 +189,13 @@ class Signup extends Component {
               日々の業務の生産向上、品質向上を簡単に管理していくことを目的としたサービスです。<br /><br />
               社会人1年目〜3年目の方々、業務改善を考えている方により簡単により親しみを持ってPDCAを回していけるツールです。
             </p>
-            <div className="md-form-wrap signin-form">
+            <div className="md-form-wrap signup-form">
               <form onSubmit={this.handleOnSubmit} className="md-form">
-                <p className={errClass}>{this.state.errors}</p>
+                {this.state.errors.map((err, i) => {
+                  return (
+                    <p className={errClass} key={i}><i class="fas fa-exclamation-triangle"></i>{err}</p>
+                  )
+                })}
                 <div className="md-form-group">
                   <label>User Name</label>
                   <input
@@ -211,36 +220,37 @@ class Signup extends Component {
                     className={errInput}
                   />
                 </div>
-                <div className="md-form-group">
+                <div className="md-form-group md-form-group--pw">
                   <label>Password</label>
-                  <input
-                    type="password"
-                    name="password"
-                    placeholder="●●●●●●●●"
-                    value={this.state.password}
-                    onChange={this.handleOnPassword}
-                    onBlur={this.handleOnPassword}
-                    className={`${errInput} posR input-password`}
-                  />
-                  <i
-                    className="material-icons posA check-pw"
-                    onClick={this.handleOnPasswordConfirm}
-                  >remove_red_eye</i>
+                  <div className="md-form-group--pw">
+                    <input
+                      type="password"
+                      name="password"
+                      placeholder="●●●●●●●●"
+                      value={this.state.password}
+                      onChange={this.handleOnPassword}
+                      onBlur={this.handleOnPassword}
+                      className={`${errInput} input-password`}
+                    />
+                    <i className="far fa-eye check-pw" onClick={this.handleOnPasswordConfirm} />
+                  </div>
                 </div>
                 <div className="md-form-group">
                   <label>Thumbnail</label>
                   <div className="dropzone posR">
-                    <p className="md-text upload-text">
-                      <img src={cloud} alt="cloud" className="md-icon md-icon-cloud" />
-                      クリックしてファイルをアップロードしてください
-                    </p>
-                    <input
-                      type="file"
-                      name="file"
-                      className="posA"
-                      onChange={this.handleOnImg}
-                    />
-                    <div className="dropzone-thumb" />
+                    <div className="dropzone-inner posA">
+                      <p className="md-text upload-text">
+                        <img src={cloud} alt="cloud" className="md-icon md-icon-cloud" />
+                        クリックしてファイルをアップロードしてください
+                      </p>
+                      <input
+                        type="file"
+                        name="file"
+                        className="posA"
+                        onChange={this.handleOnImg}
+                      />
+                      <div className="dropzone-thumb" />
+                    </div>
                   </div>
                 </div>
                 <div className="md-form-group">

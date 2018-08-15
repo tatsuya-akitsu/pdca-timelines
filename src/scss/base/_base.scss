@@ -15,7 +15,7 @@ body {
     overflow-x: hidden;
   }
 
-  background: #f3f7fc;
+  background: $base-wh;
   color: $base-bl;
   font-family: $base-fontFamily;
   height: 100%;
@@ -38,15 +38,13 @@ body {
 // -------------------------------------
 
 a {
-  color: #00605d;
-  font-size: 1.4rem;
-  font-weight: bold;
+  color: $base-pu;
   text-decoration: none;
 
   &:hover,
   &:focus,
   &:visited {
-    color: #00605d;
+    color: $base-pu;
     text-decoration: none;
   }
 }

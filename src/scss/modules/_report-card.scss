@@ -1,0 +1,108 @@
+/* reports card */
+.reports-wrap {
+  background-color: $base-wh;
+  border: 1px solid #efefef;
+  border-radius: 5px;
+  padding: 2rem;
+}
+
+.reports-card-head {
+  border-bottom: 2px solid $base-wh;
+  padding-bottom: 2rem;
+  padding-top: 5rem;
+  width: 100%;
+
+  .reports-status-icon {
+    border: 1px solid #efefef;
+    border-radius: 50%;
+    height: auto;
+    margin: 0 auto;
+    width: 8rem;
+
+    &::before {
+      content: '';
+      display: block;
+      padding-top: 100%;
+    }
+  }
+
+  .report-date {
+    color: #9facb6;
+    font-family: $work;
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin: 2rem 0 0;
+    text-align: center;
+  }
+
+  .report-btn-wrap {
+    right: 0;
+    text-align: center;
+    top: 0;
+    width: auto;
+
+    .md-btn--style03 {
+      margin: 0 2rem 0 0 !important;
+
+      &:nth-last-of-type(1) {
+        margin: 0 !important;
+      }
+    }
+
+    .md-icon-edit,
+    .md-icon-view {
+      margin: 0;
+    }
+  }
+}
+
+.reports-card-body {
+  padding-top: 2rem;
+  width: 100%;
+
+  .report-task-wrap {
+    width: 100%;
+  }
+
+  .md-tasks-title {
+    color: #9facb6;
+    font-size: 1.8rem;
+    text-align: left;
+  }
+
+  .report-detail {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    margin: 4rem 0 0;
+    width: 100%;
+  }
+
+  .report-detail-item {
+    flex: 1;
+
+    &:nth-of-type(1) {
+      margin: 0;
+    }
+
+    .md-title-small {
+      color: #9facb6;
+      font-family: $base-fontFamily;
+      font-size: 1.4rem;
+      font-weight: 600;
+      text-align: center !important;
+    }
+
+    .report-detail-box {
+      display: inline-block;
+      margin: 2rem 0 0;
+      position: relative;
+
+      .md-num {
+        left: -0.5rem;
+        position: absolute;
+        top: -0.5rem;
+      }
+    }
+  }
+}

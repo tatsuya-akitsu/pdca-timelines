@@ -7,7 +7,9 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/src/stylesheets/datepicker.scss';
 
 import logo from '../../images/logo_horizontal.svg';
+import thumb from '../../images/reports_add.svg';
 import addTask from '../../images/tasks-solid.svg';
+import angle from '../../images/angle_down.svg';
 
 class AddReport extends Component {
   constructor(props) {
@@ -52,40 +54,11 @@ class AddReport extends Component {
   handleAddActionInput(e) {
     e.preventDefault();
     // 入力された値を連想配列に追加
-    const { action } = this.state;
-    const newAction = {
-      action: action
-    }
-    this.state.actions.push(newAction)
-
-    // 新しいinputの生成
-    const actionWrap = document.querySelector('.form-action-group')
-    const actionDOM = document.createElement('div');
-    const actionInput = document.createElement('input');
-    const addBtn = document.createElement('button')
-    const removeBtn = document.createElement('button')
-
-    actionDOM.classList.add('md-form-item')
-    actionDOM.classList.add('form-action-item')
-    actionInput.setAttribute('type', 'text')
-    actionInput.setAttribute('name', 'action')
-    actionInput.setAttribute('placeholder', 'コードレビューを丁寧に進める')
-    actionInput.addEventListener('click', this.handleOnAction)
-    actionInput.addEventListener('blur', this.handleOnAction)
-
-    addBtn.classList.add('md-btn-square')
-    addBtn.classList.add('md-btn-plus')
-    addBtn.innerText = '+'
-    addBtn.addEventListener('click', this.handleAddActionInput)
-    removeBtn.classList.add('md-btn-square')
-    removeBtn.classList.add('md-btn-minus')
-    removeBtn.innerText = '-'
-    removeBtn.addEventListener('click', this.handleRemoveActionInput)
-
-    actionDOM.appendChild(actionInput)
-    actionDOM.appendChild(addBtn)
-    actionDOM.appendChild(removeBtn)
-    actionWrap.appendChild(actionDOM)
+    const action = this.state.action
+    this.state.actions.push(action)
+    const input = document.getElementsByClassName('md-form-input--action')
+    input[0].value = ""
+    this.setState({ action: '' })
   }
 
   handleRemoveActionInput(e) {
@@ -108,40 +81,11 @@ class AddReport extends Component {
   handleAddTaskInput(e) {
     e.preventDefault();
     // 入力された値を連想配列に追加
-    const { task } = this.state;
-    const newTask = {
-      task: task
-    }
-    this.state.tasks.push(newTask)
-
-    // 新しいinputの生成
-    const taskWrap = document.querySelector('.form-task-group')
-    const taskDOM = document.createElement('div');
-    const taskInput = document.createElement('input');
-    const addBtn = document.createElement('button')
-    const removeBtn = document.createElement('button')
-
-    taskDOM.classList.add('md-form-item')
-    taskDOM.classList.add('form-task-item')
-    taskInput.setAttribute('type', 'text')
-    taskInput.setAttribute('name', 'action')
-    taskInput.setAttribute('placeholder', 'デザイン構築')
-    taskInput.addEventListener('click', this.handleOnTask)
-    taskInput.addEventListener('blur', this.handleOnTsk)
-
-    addBtn.classList.add('md-btn-square')
-    addBtn.classList.add('md-btn-plus')
-    addBtn.innerText = '+'
-    addBtn.addEventListener('click', this.handleAddTaskInput)
-    removeBtn.classList.add('md-btn-square')
-    removeBtn.classList.add('md-btn-minus')
-    removeBtn.innerText = '-'
-    removeBtn.addEventListener('click', this.handleRemoveActionInput)
-
-    taskDOM.appendChild(taskInput)
-    taskDOM.appendChild(addBtn)
-    taskDOM.appendChild(removeBtn)
-    taskWrap.appendChild(taskDOM)
+    const task = this.state.task
+    this.state.tasks.push(task)
+    const input = document.getElementsByClassName('md-form-input--task')
+    input[0].value = ""
+    this.setState({ task: '' })
   }
 
   handleRemoveTaskInput(e) {
@@ -170,7 +114,10 @@ class AddReport extends Component {
     const newReports = {
       date: fmtDate,
       actions: actions,
-      tasks: tasks
+      tasks: tasks,
+      logs: [],
+      retro: '',
+      nextActions: []
     }
 
     newReportsRef.update(newReports).then(() => {
@@ -191,45 +138,84 @@ class AddReport extends Component {
             <img src={logo} alt="RIOT" className="md-img md-img-logo" />
           </div>
         </header>
-        <section className="md-section reports-section">
+        <section className="md-section-header md-section-header--color01">
           <div className="md-wrapper">
-            <h2 className="md-title md-title-h2">PDCA新規作成</h2>
+            <div className="md-section-header-inner fleB">
+              <div className="md-section-header--leftPanel">
+                <h2 className="md-title md-title-h2--small">PDCA新規作成</h2>
+                <p className="md-text main-desc">
+                  PDCAを新規作成できます。<br />
+                  一日の始まりはこの画面から始めましょう。<br />
+                  簡単に日付とタスク、意識する項目を設定するだけで作成が可能です。
+                </p>
+              </div>
+              <div className="md-section-header--rightPanel">
+                <img src={thumb} alt="" className="md-thumb md-thumb--reportsTop" />
+              </div>
+            </div>
+          </div>
+        </section>
+        <section className="md-section md-section--report">
+          <div className="md-wrapper">
             <div className="md-inner">
-              <form onSubmit={this.handleAddReports} className="md-form">
+              <form onSubmit={this.handleAddReports} className="md-form md-form--report">
                 <div className="md-form-group">
                   <label>日付</label>
-                  <DatePicker
-                    dateFormat="YYYY/MM/DD"
-                    selected={this.state.date}
-                    onChange={this.handleOnDate}
-                  />
+                  <div className="datepicker-wrap">
+                    <DatePicker
+                      dateFormat="YYYY/MM/DD"
+                      selected={this.state.date}
+                      onChange={this.handleOnDate}
+                    />
+                    <img src={angle} alt="" className="md-icon md-icon-angle" />
+                  </div>
                 </div>
-                <div className="form-action-group">
+                <div className="md-form-group">
                   <label>アクション</label>
-                  <div className="md-form-group form-action-item">
+                  <ul className="form-list">
+                    {this.state.actions.map((a, i) => {
+                      return (
+                        <li className="form-item" key={i}>
+                          <span className="form-item-name">{a}</span>
+                          <button className="md-btn-square md-btn-minus posR" onClick={this.handleRemoveActionInput} />
+                        </li>
+                      )
+                    })}
+                  </ul>
+                  <div className="md-form-item">
                     <input
                       type="text"
                       name="action"
                       placeholder="コードレビューを丁寧に進める"
+                      className="md-form-input md-form-input--action"
                       onChange={this.handleOnAction}
                       onBlur={this.handleOnAction}
                     />
-                    <button className="md-btn-square md-btn-plus" onClick={this.handleAddActionInput}>+</button>
-                    <button className="md-btn-square md-btn-minus" onClick={this.handleRemoveActionInput}>-</button>
+                    <button className="md-btn-square md-btn-plus posR" onClick={this.handleAddActionInput} />
                   </div>
                 </div>
-                <div className="form-task-group">
+                <div className="md-form-group">
                   <label>タスク</label>
-                  <div className="md-form-group form-task-item">
+                  <ul className="form-list">
+                    {this.state.tasks.map((t, i) => {
+                      return (
+                        <li className="form-item" key={i}>
+                          <span className="form-item-name">{t}</span>
+                          <button className="md-btn-square md-btn-minus posR" onClick={this.handleRemoveTaskInput} />
+                        </li>
+                      )
+                    })}
+                  </ul>
+                  <div className="md-form-item">
                     <input
                       type="text"
                       name="task"
                       placeholder="デザイン構築"
+                      className="md-form-input md-form-input--task"
                       onChange={this.handleOnTask}
                       onBlur={this.handleOnTask}
                     />
-                    <button className="md-btn-square md-btn-plus" onClick={this.handleAddTaskInput}>+</button>
-                    <button className="md-btn-square md-btn-minus" onClick={this.handleRemoveTaskInput}>-</button>
+                    <button className="md-btn-square md-btn-plus posR" onClick={this.handleAddTaskInput} />
                   </div>
                 </div>
                 <div className="md-form-group">

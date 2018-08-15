@@ -1,151 +1,95 @@
 .md-btn {
-  @media screen and (max-width: 768px) {
-    padding: 1.5rem 4rem;
-  }
-
-  border-radius: 5px;
+  border-radius: 3px;
   display: inline-block;
-  font-family: $base-fontFamily;
-  font-size: 1.45rem;
-  font-weight: bold;
-  line-height: 1;
-  padding: 1.3rem 3.5rem;
-  text-align: center;
-  transition: all .3s ease;
 }
 
-.btn-signin {
+.md-btn--style01 {
+  background-color: $base-pu;
+  font-size: 0;
+  padding: 1.2rem 3.2rem;
+}
+
+.md-btn--style02 {
+  background-color: $base-pu;
+  font-size: 0;
+  padding: 2rem 5.4rem;
+}
+
+.md-btn--style03 {
+  background-color: #230071;
+  font-size: 0;
+  padding: 1rem 2.6rem;
+}
+
+.btn--color01 {
+  background-color: #fcfaff;
+
+  .md-btn-name {
+    color: $base-bl;
+  }
+}
+
+.btn--color02 {
+  background-color: #d0d0d0;
+}
+
+.btn--color03 {
+  background-color: #9c00bf;
+}
+
+.md-btn-square {
+  border-radius: 3px;
+  display: inline-block;
+  height: 4rem;
+  vertical-align: middle;
+  width: 4rem;
+}
+
+.md-btn-plus {
   background-color: $base-wh;
-  color: #00afa9;
+  border: 1px solid #905dff;
 
-  &:hover {
-    background-color: #00afa9;
-    color: $base-wh;
+  &::before {
+    background-image: url('../images/plus.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    content: '';
+    display: block;
+    height: 1.9rem;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 1.9rem;
   }
 }
 
-.btn-twitter {
-  @media screen and (max-width: 768px) {
-    padding: 1.5rem 2rem;
-  }
-
+.md-btn-minus {
   background-color: $base-wh;
-  color: #1da1f2;
-  margin: 0 1.5rem 0 0;
+  border: 1px solid #a6b1c9;
 
-  &:hover {
-    background-color: #1da1f2;
-    color: $base-wh;
-  }
-
-  .fab {
-    padding: 0 .8rem 0 0;
-  }
-}
-
-.btn-google {
-  @media screen and (max-width: 768px) {
-    padding: 1.5rem 2rem;
-  }
-
-  background-color: $base-wh;
-  color: #db4437;
-  margin: 0 0 0 1.5rem;
-
-  &:hover {
-    background-color: #db4437;
-    color: $base-wh;
-  }
-
-  .fab {
-    padding: 0 .8rem 0 0;
+  &::before {
+    background-image: url('../images/minus.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    content: '';
+    display: block;
+    height: 1.9rem;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 1.9rem;
   }
 }
 
-.btn-signup {
-  background-color: $base-wh;
-  color: #bc1399;
+.md-btn--styleGoogle {
+  background-color: #f2f2f2;
+  padding: 1rem 2.4rem;
 
-  &:hover {
-    background-color: #bc1399;
-    color: $base-wh;
-  }
-}
-
-.btn-addRoom {
-  @media screen and (max-width: 768px) {
-    padding: 1rem 3rem;
-  }
-
-  background-color: #008883;
-  color: $base-wh;
-  margin: 2rem 0 0;
-
-  .material-icons {
-    margin: 0 .5rem 0 0;
-    vertical-align: middle;
-  }
-
-  span {
-    display: inline-block;
-    line-height: 24px;
-    vertical-align: middle;
-  }
-
-  &:hover {
-    background-color: $base-wh;
-    color: #008883;
-  }
-}
-
-.btn-back {
-  @media screen and (max-width: 768px) {
-    padding: 1rem 2rem;
-  }
-
-  background-color: $base-wh;
-  font-size: 1.2rem;
-  padding: .7rem 3rem;
-
-  .material-icons {
-    margin: 0 .5rem 0 0;
-    vertical-align: middle;
-  }
-
-  span {
-    display: inline-block;
-    line-height: 24px;
-    vertical-align: middle;
-  }
-
-  &:hover {
-    background-color: #00605d;
-    color: $base-wh;
-  }
-}
-
-.btn-msg-submit {
-  @media screen and (max-width: 768px) {
-    padding: 1rem 2rem;
-  }
-
-  background-color: #008883;
-  color: $base-wh;
-  margin: 1rem 0 0;
-
-  .material-icons {
-    margin: 0 .5rem 0 0;
-    vertical-align: middle;
-  }
-
-  span {
-    display: inline-block;
-    line-height: 24px;
-    vertical-align: middle;
-  }
-
-  &:hover {
-    background-color: $base-wh;
-    color: #008883;
+  .md-btn-name {
+    color: #db4437;
   }
 }

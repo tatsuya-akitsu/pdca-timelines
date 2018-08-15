@@ -1,14 +1,130 @@
-.md-icon_main {
-  @media screen and (max-width: 768px) {
-    width: 6rem;
-  }
-
-  display: block;
-  margin: 0 auto;
-  width: 10rem;
+.md-img {
+  max-width: 100%;
+  width: 100%;
 }
 
-.fab {
+.md-img-logo {
+  width: 14rem;
+}
+
+.md-icon {
   display: inline-block;
   vertical-align: middle;
+}
+
+.md-thumb {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+}
+
+.md-icon-signin {
+  margin: 0 1rem 0 0;
+  width: 1.8rem;
+}
+
+.md-icon-user {
+  margin: 0 1rem 0 0;
+  width: 1.8rem;
+}
+
+.md-icon-cloud {
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 1rem;
+  width: 6rem;
+}
+
+.fa-google {
+  color: #db4437;
+  display: inline-block;
+  margin: 0 1rem 0 0;
+  vertical-align: middle;
+}
+
+.fa-exclamation-triangle {
+  display: inline-block;
+  margin: 0 1rem 0 0;
+  vertical-align: middle;
+}
+
+.md-icon-edit {
+  margin: 0 1rem 0 0;
+  width: 1.5rem;
+}
+
+.md-icon-view {
+  margin: 0 1rem 0 0;
+  width: 1.5rem;
+}
+
+.md-icon-angle {
+  width: 5rem;
+}
+
+.md-icon-tasks {
+  margin: 0 1rem 0 0;
+  width: 2.7rem;
+}
+
+.md-thumb--reportsTop {
+  width: 55%;
+}
+
+.md-icon-actionBadge,
+.md-icon-taskBadge,
+.md-icon-nextActBadge {
+  width: 4rem;
+}
+
+.md-icon-weather {
+  display: block;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 5rem;
+}
+
+.md-icon-checkbox {
+  line-height: 1;
+  margin: -.5px 1rem 0 0;
+  position: relative;
+
+  &::before {
+    color: #f27e7c;
+    content: "\f0c8";
+    font-family: "Font Awesome 5 Free";
+    font-size: 1.7rem;
+    font-weight: normal;
+  }
+}
+
+.md-icon-editIcon {
+  margin: 0 1rem 0 0;
+  width: 1.8rem;
+}
+
+.md-icon-time {
+  margin: 0 1rem 0 0;
+  width: 1.6rem;
+}
+
+.md-icon-cause {
+  margin: 0 1rem 0 0;
+  width: 1.6rem;
+}
+
+.md-icon-analysis {
+  margin: 0 1rem 0 0;
+  width: 1.6rem;
+}
+
+.md-icon-set {
+  margin: 0 1rem 0 0;
+  width: 2rem;
+}
+
+.md-icon-complete {
+  margin: 0 1rem 0 0;
+  width: 2rem;
 }

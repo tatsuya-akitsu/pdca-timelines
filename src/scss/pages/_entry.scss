@@ -1,0 +1,34 @@
+.main-thumb,
+.main-box {
+  flex: 1;
+}
+
+.main-thumb {
+  background-image: url('../images/main.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  height: calc(100vh - 18.2rem);
+  margin: 0 4.2rem 0 0;
+}
+
+.main-box {
+  margin: 0 0 0 4.2rem;
+
+  .main-desc {
+    font-size: 1.4rem;
+    margin: 4.2rem 0 0;
+  }
+
+  .md-btn--style02 {
+    margin: 3rem 0 0;
+  }
+
+  .md-text--small {
+    margin: 1.2rem 0 0;
+  }
+
+  .md-btn--styleGoogle {
+    margin: 1.4rem 0 0;
+  }
+}

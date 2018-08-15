@@ -44,7 +44,7 @@ class Main extends Component {
             </Link>
           </div>
         </header>
-        <section className="md-section main-section">
+        <section className="main-section">
           <div className="md-wrapper main-wrap">
             <div className="main-thumb" />
             <div className="main-box">

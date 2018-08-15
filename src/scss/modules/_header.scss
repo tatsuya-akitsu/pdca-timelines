@@ -1,64 +1,30 @@
 .md-header {
   width: 100%;
-
-  .md-headline_h1 {
-    margin: 2rem 0 0;
-  }
-
-  .md-text {
-    color: #b5b5b5;
-    letter-spacing: .5px;
-    margin: 1.6rem 0 0;
-  }
 }
 
-.md-header--style01 {
-  border-bottom: 1px solid #ececec;
+.md-section-header {
+  background-color: #53519e;
 }
 
-.md-header-wrap {
-  @media screen and (max-width: 768px) {
-    padding: 1.2rem 1.5rem;
-  }
+.md-section-header--color01 {
+  background-color: #279fad;
+}
 
-  @media screen and (min-width: 769px) {
-    max-width: 780px;
-  }
+.md-section-header--color02 {
+  background-color: #09883f;
+}
 
+.md-section-header-inner {
   align-items: center;
-  display: flex;
-  justify-content: space-between;
-  margin: 0 auto;
-  padding: 1.2rem 0;
-  width: 100%;
-
-  .md-icon_main {
-    @media screen and (max-width: 768px) {
-      width: 3rem;
-    }
-
-    display: inline-block;
-    margin: 0;
-    vertical-align: middle;
-    width: 4.2rem;
-  }
-
-  .md-headline_h1 {
-    @media screen and (max-width: 768px) {
-      font-size: 1.4rem;
-    }
-
-    display: inline-block;
-    font-size: 1.6rem;
-    margin: 0 0 0 1.5rem;
-    vertical-align: middle;
-  }
 }
 
-.md-header--fixed {
-  background-color: #f3f7fc;
-  left: 0;
-  position: fixed;
-  top: 0;
-  z-index: 100;
+.md-section-header--leftPanel,
+.md-section-header--rightPanel {
+  flex: 1;
+
+  .main-desc {
+    color: $base-wh;
+    margin: 3rem 0 0;
+    text-align: left;
+  }
 }
