@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link, hashHistory } from 'react-router';
+import { Link } from 'react-router';
 import firebase from 'firebase';
 import GlobalHeader from './header';
 
@@ -7,9 +7,9 @@ class Mypage extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      uid: '',
       name: '',
       email: '',
-      password: '',
       photo: ''
     }
   }
@@ -22,8 +22,8 @@ class Mypage extends Component {
     const user = firebase.auth().currentUser
 
     if (user != null) {
-      console.log(user)
       this.setState({
+        uid: user.uid,
         name: user.displayName,
         email: user.email,
         photo: user.photoURL
@@ -43,7 +43,7 @@ class Mypage extends Component {
                 <img src={this.state.photo} alt="" className="user-profile-img" />
                 <div className="profile-about">
                   <p className="md-text md-profile-name">{this.state.name}</p>
-                  <Link to="/mypage/:uid/edit" className="md-btn md-btn--style01 btn--color04">
+                  <Link to={`/mypage/${this.state.uid}/edit`} className="md-btn md-btn--style01 btn--color04">
                     <span className="md-btn-name">プロフィール編集</span>
                   </Link>
                   <div className="profile-info">

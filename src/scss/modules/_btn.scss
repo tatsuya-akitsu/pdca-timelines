@@ -37,6 +37,15 @@
   background-color: #9c00bf;
 }
 
+.btn--color04 {
+  background-color: $base-wh;
+  border: 1px solid #6822ff;
+
+  .md-btn-name {
+    color: #6822ff;
+  }
+}
+
 .md-btn-square {
   border-radius: 3px;
   display: inline-block;

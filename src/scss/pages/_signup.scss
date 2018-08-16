@@ -5,6 +5,7 @@
     margin: 0 auto;
     margin-top: 6rem;
     max-width: 500px;
+    padding: 0 0 20%;
     text-align: center;
     width: 100%;
 
@@ -20,64 +21,64 @@
     }
   }
 
-  .dropzone {
-    background-color: #f8f8f8;
-    border-radius: 5px;
-    height: 300px;
-    width: 100%;
-  }
-
-  .dropzone-inner {
-    background-color: transparent;
-    border: 2px dashed #d1d1d1;
-    height: calc(100% - 2rem);
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: calc(100% - 2rem);
-  }
-
-  .upload-text {
-    color: #d1d1d1;
-    font-size: 1.4rem;
-    font-weight: bold;
-    left: 50%;
-    position: absolute;
-    text-align: center;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
-  }
-
-  input[type="file"] {
-    cursor: pointer;
-    height: 100%;
-    left: 0;
-    opacity: 0;
-    top: 0;
-    width: 100%;
-    z-index: 9999;
-  }
-
-  .dropzone-thumb {
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
-    height: auto;
-    left: 50%;
-    position: absolute;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: 80%;
-
-    &::before {
-      content: '';
-      display: block;
-      padding-top: 60%;
-    }
-  }
-
   .md-text--small {
     margin: 1.2rem 0 0;
+  }
+}
+
+.dropzone {
+  background-color: #f8f8f8;
+  border-radius: 5px;
+  height: 300px;
+  width: 100%;
+}
+
+.dropzone-inner {
+  background-color: transparent;
+  border: 2px dashed #d1d1d1;
+  height: calc(100% - 2rem);
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: calc(100% - 2rem);
+}
+
+.upload-text {
+  color: #d1d1d1;
+  font-size: 1.4rem;
+  font-weight: bold;
+  left: 50%;
+  position: absolute;
+  text-align: center;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+}
+
+input[type="file"] {
+  cursor: pointer;
+  height: 100%;
+  left: 0;
+  opacity: 0;
+  top: 0;
+  width: 100%;
+  z-index: 9999;
+}
+
+.dropzone-thumb {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: auto;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+
+  &::before {
+    content: '';
+    display: block;
+    padding-top: 60%;
   }
 }

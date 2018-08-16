@@ -12,7 +12,7 @@ import ReportDetail from './components/reportDetail';
 // import Dissections from './components/dissections';
 // import Dissection from './components/dissection';
 import Mypage from './components/mypage';
-// import EditMypage from './components/editMypage';
+import EditMypage from './components/editMypage';
 // import Config from './components/config';
 // import Terms from './components/terms';
 // import Policy from './components/policy';
@@ -35,6 +35,7 @@ class App extends Component {
         <Route path="/reports/report/:reportId/edit" component={EditReport} />
         <Route path="/reports/report/:reportId" component={ReportDetail} />
         <Route path="/mypage/:uid" component={Mypage} />
+        <Route path="/mypage/:uid/edit" component={EditMypage} />
         {/* <Route path="/dissections" component={Dissections} />
         <Route path="/dissections/dissection/:dissectionId" component={Dissection} /> */}
         {/* <Route path="/room/:roomId" component={Room} /> */}

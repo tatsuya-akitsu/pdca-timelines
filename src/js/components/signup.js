@@ -3,6 +3,7 @@ import { Link, hashHistory } from 'react-router';
 import firebase from 'firebase';
 
 import GlobalHeader from './header';
+import ErrBaloon from './errbaloon';
 import cloud from '../../images/cloud.svg';
 import user from '../../images/user.svg';
 
@@ -85,67 +86,85 @@ class Signup extends Component {
     const regEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     let isValid = true;
 
+    const errDOM = document.getElementsByClassName('err-msg')
+
     if (!name.length) {
       isValid = false;
       errors.push('アカウント名が未入力です')
+      for (let i = 0; i < errDOM.length; i++) {
+        errDOM[i].classList.add('is-block')
+      }
       this.setState({
-        errClass: true,
-        errInput: true
+        errClass: false,
+        errInput: false
       })
     }
     if (regName.test(name)) {
       isValid = false;
       errors.push('卑猥もしくは不適切な言葉が含まれています')
+      for (let i = 0; i < errDOM.length; i++) {
+        errDOM[i].classList.add('is-block')
+      }
       this.setState({
-        errClass: true,
-        errInput: true
+        errClass: false,
+        errInput: false
       })
     }
 
     if (!email.length) {
       isValid = false;
       errors.push('メールアドレスが未入力です')
+      for (let i = 0; i < errDOM.length; i++) {
+        errDOM[i].classList.add('is-block')
+      }
       this.setState({
-        errClass: true,
-        errInput: true
+        errClass: false,
+        errInput: false
       })
     }
     if (!email.match(regEmail)) {
       isValid = false;
       errors.push('メールアドレスの入力形式が違います')
+      for (let i = 0; i < errDOM.length; i++) {
+        errDOM[i].classList.add('is-block')
+      }
       this.setState({
-        errClass: true,
-        errInput: true,
+        errClass: false,
+        errInput: false,
       })
     }
 
     if (!password.length) {
       isValid = false;
       errors.push('パスワードが未入力です')
+      for (let i = 0; i < errDOM.length; i++) {
+        errDOM[i].classList.add('is-block')
+      }
       this.setState({
-        errClass: true,
-        errInput: true
+        errClass: false,
+        errInput: false
       })
     }
     if (!password.match(regPW)) {
       isValid = false;
       errors.push('パスワードは半角英数字の大文字･小文字･数字を含む8文字以上で設定をお願いします')
+      for (let i = 0; i < errDOM.length; i++) {
+        errDOM[i].classList.add('is-block')
+      }
       this.setState({
-        errClass: true,
-        errInput: true
+        errClass: false,
+        errInput: false
       })
     }
 
     if (!isValid) {
       this.setState({
         errors,
-        errClass: false,
-        errInput: false
+        errClass: true,
+        errInput: true
       });
       return;
     }
-
-    console.log(this.state)
 
     firebase.auth().createUserWithEmailAndPassword(email, password).then(newUser => {
       return newUser.user.updateProfile({
@@ -163,12 +182,12 @@ class Signup extends Component {
   }
 
   render() {
-    const errClass = this.state.errClass === true ? 'md-text err-msg is-block' : 'md-text err-msg';
     const errInput = this.state.errInput === true ? 'md-form-input is-error' : 'md-form-input';
 
     return (
       <div className="l-main">
-        <GlobalHeader btn="signin" />
+        <GlobalHeader btn="signin" /> 
+        <ErrBaloon className="md-text err-msg" name="err-signup" items={this.state.errors} />
         <section className="md-section signup-section">
           <div className="md-wrapper">
             <h2 className="md-title md-title-h2">
@@ -182,11 +201,6 @@ class Signup extends Component {
             </p>
             <div className="md-form-wrap signup-form">
               <form onSubmit={this.handleOnSubmit} className="md-form">
-                {this.state.errors.map((err, i) => {
-                  return (
-                    <p className={errClass} key={i}><i className="fas fa-exclamation-triangle"></i>{err}</p>
-                  )
-                })}
                 <div className="md-form-group">
                   <label>User Name</label>
                   <input
