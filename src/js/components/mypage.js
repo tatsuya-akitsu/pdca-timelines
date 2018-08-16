@@ -22,7 +22,6 @@ class Mypage extends Component {
     const user = firebase.auth().currentUser
 
     if (user != null) {
-      console.log(user)
       this.setState({
         uid: user.uid,
         name: user.displayName,

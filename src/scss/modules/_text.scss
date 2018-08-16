@@ -40,21 +40,46 @@
 }
 
 .err-msg {
-  background-color: #f2cdcd;
-  border: 1px solid #d32f2f;
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
   border-radius: 3px;
-  display: none;
+  bottom: 0;
+  color: #721c24;
+  display: inline-block;
   font-size: 1.4rem;
-  margin-top: 1rem;
+  left: 50%;
+  opacity: 0;
   padding: 1rem 1.6rem;
+  position: absolute;
   text-align: left;
+  transform: translate(-50%, 0);
+  transition: all .3s ease-out;
+  width: 540px;
 
-  &:nth-of-type(1) {
-    margin-top: 0;
+  .err-text {
+    display: block;
   }
+}
 
-  &:nth-last-of-type(1) {
-    margin-bottom: 2rem;
+.success-text {
+  background-color: #d4edda;
+  border: 1px solid #c3e6cb;
+  border-radius: 3px;
+  bottom: 0;
+  color: #155724;
+  display: inline-block;
+  font-size: 1.4rem;
+  left: 50%;
+  opacity: 0;
+  padding: 1rem 1.6rem;
+  position: absolute;
+  text-align: left;
+  transform: translate(-50%, 0);
+  transition: all .3s ease-out;
+  width: 540px;
+
+  .success-inlineText {
+    display: block;
   }
 }
 

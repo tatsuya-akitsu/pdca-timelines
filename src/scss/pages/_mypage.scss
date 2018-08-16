@@ -1,4 +1,6 @@
 .md-section--mypage {
+  padding: 0 0 7%;
+
   .md-wrapper {
     margin: 0 auto;
     max-width: 780px;
@@ -6,6 +8,24 @@
 
   .md-title-h2--small {
     color: $base-pu;
+  }
+
+  .md-form {
+    margin: 4rem 0 0;
+
+    &:nth-of-type(1) {
+      margin: 0;
+    }
+
+    .md-form-group {
+      &:nth-last-of-type(1) {
+        margin: 2rem 0 0;
+      }
+    }
+  }
+
+  .btn--changePassword {
+    margin: 4rem 0 0;
   }
 }
 

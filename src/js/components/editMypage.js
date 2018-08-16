@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import firebase from 'firebase';
-import ClassNames from '../../../node_modules/classnames';
 
 import GlobalHeader from './header';
+import SuccessBaloon from './successBaloon';
+import ErrBaloon from './errbaloon';
 import cloud from '../../images/cloud.svg';
 
 class EditMypage extends Component {
@@ -16,9 +17,13 @@ class EditMypage extends Component {
       photo: '',
       editPhoto: '',
       providerId: '',
+      nameErrors: [],
+      thumbErrors: [],
       errors: [],
       errClass: false,
       errInput: false,
+      nameSuccess: [],
+      thumbSuccess: [],
       successClass: false,
       sendSuccessClass: false
     }
@@ -73,41 +78,55 @@ class EditMypage extends Component {
   handleOnNameSubmit(e) {
     e.preventDefault();
     const editName = this.state.editName;
-    const errors = [];
+    const nameErrors = [];
     const regName = /(ちんちん|おっぱい)/;
     let isValid = true;
 
+    const errDOM = document.getElementsByClassName('err-name')
+    const sucDOM = document.getElementsByClassName('name-success')
+
     if (!editName.length) {
       isValid = false;
-      errors.push('アカウント名が未入力です')
+      nameErrors.push('アカウント名が未入力です')
+      for (let i = 0; i < errDOM.length; i++) {
+        errDOM[i].classList.add('is-block')
+      }
       this.setState({
-        errClass: true,
-        errInput: true
+        errClass: false,
+        errInput: false
       })
     }
     if (regName.test(editName)) {
       isValid = false;
-      errors.push('卑猥もしくは不適切な言葉が含まれています')
+      nameErrors.push('卑猥もしくは不適切な言葉が含まれています')
+      for (let i = 0; i < errDOM.length; i++) {
+        errDOM[i].classList.add('is-block')
+      }
       this.setState({
-        errClass: true,
-        errInput: true
+        errClass: false,
+        errInput: false
       })
     }
     if (!isValid) {
       this.setState({
-        errors,
-        errClass: false,
-        errInput: false
+        nameErrors,
+        errClass: true,
+        errInput: true
       })
+      return;
     }
 
     const user = firebase.auth().currentUser
     user.updateProfile({
       displayName: editName
     }).then(() => {
+      this.state.nameSuccess.push('ユーザー名を変更しました')
+      for (let i = 0; i < sucDOM.length; i++) {
+        sucDOM[i].classList.add('is-block')
+      }
       this.setState({ successClass: true })
     }).catch((err) => {
-      errors.push(err)
+      nameErrors.push(err)
       this.setState({
         errClass: true,
       })
@@ -117,15 +136,43 @@ class EditMypage extends Component {
   handleOnThumbSubmit(e) {
     e.preventDefault();
     const editPhoto = this.state.editPhoto
-    const errors = []
+    const thumbErrors = []
+    let isValid = true;
+
+    const errDOM = document.getElementsByClassName('err-thumb')
+    const sucDOM = document.getElementsByClassName('thumb-success')
+
+    if (!editPhoto.length) {
+      isValid = false;
+      thumbErrors.push('画像をアップロードしてください')
+      for (let i = 0; i < errDOM.length; i++) {
+        errDOM[i].classList.add('is-block')
+      }
+      this.setState({
+        errClass: false,
+        errInput: false
+      })
+    }
+    if (!isValid) {
+      this.setState({
+        thumbErrors,
+        errClass: true,
+        errInput: true
+      })
+      return;
+    }
 
     const user = firebase.auth().currentUser
     user.updateProfile({
       photoURL: editPhoto
     }).then(() => {
+      this.state.thumbSuccess.push('アイコンを変更しました')
+      for (let i = 0; i < sucDOM.length; i++) {
+        sucDOM[i].classList.add('is-block')
+      }
       this.setState({ successClass: true })
     }).catch((err) => {
-      errors.push(err)
+      thumbErrors.push(err)
       this.setState({
         errClass: true,
       })
@@ -139,8 +186,13 @@ class EditMypage extends Component {
     const email = this.state.email
     const errors = []
 
+    const sucDOM = document.getElementsByClassName('mail-success')
+
     auth.sendPasswordResetEmail(email).then(() => {
       this.setState({ sendSuccessClass: true })
+      for (let i = 0; i < sucDOM.length; i++) {
+        sucDOM[i].classList.add('is-block')
+      }
     }).catch((err) => {
       errors.push(err)
       this.setState({
@@ -150,17 +202,16 @@ class EditMypage extends Component {
   }
 
   render() {
-    const errClass = this.state.errClass === true ? 'md-text err-msg is-block' : 'md-text err-msg';
     const errInput = this.state.errInput === true ? 'md-form-input is-error' : 'md-form-input';
-
-    const successClass = ClassNames({
-      success: true,
-      isBlock: this.state.successClass === true
-    })
 
     return (
       <div id="l-contain">
         <GlobalHeader />
+        <p className="md-text success-text mail-success">パスワード変更用メールを送信しました。メールに沿って進めてください。</p>
+        <ErrBaloon className="md-text err-msg" name="err-name" items={this.state.nameErrors} />
+        <ErrBaloon className="md-text err-msg" name="err-thumb" items={this.state.thumbErrors} />
+        <SuccessBaloon className="md-text success-text" name="name-success" items={this.state.nameSuccess} />
+        <SuccessBaloon className="md-text success-text" name="thumb-success" items={this.state.thumbSuccess} />
         <section className="md-section md-section--mypage">
           <div className="md-wrapper">
             <h2 className="md-title md-title-h2--small">プロフィール編集</h2>
@@ -168,13 +219,7 @@ class EditMypage extends Component {
               <div className="profile-wrap fleB">
                 <img src={this.state.photo} alt="" className="user-profile-img" />
                 <div className="profile-about">
-                  <p className={`md-text success-text ${successClass}`}>プロフィールの更新が完了しました</p>
                   <form onSubmit={this.handleOnNameSubmit} className="md-form">
-                    {this.state.errors.map((err, i) => {
-                      return (
-                        <p className={errClass} key={i}><i className="fas fa-exclamation-triangle"></i>{err}</p>
-                      )
-                    })}
                     <div className="md-form-group">
                       <input
                         type="text"
@@ -193,11 +238,6 @@ class EditMypage extends Component {
                     </div>
                   </form>
                   <form onSubmit={this.handleOnThumbSubmit} className="md-form">
-                    {this.state.errors.map((err, i) => {
-                      return (
-                        <p className={errClass} key={i}><i className="fas fa-exclamation-triangle"></i>{err}</p>
-                      )
-                    })}
                     <div className="md-form-group">
                       <label>Thumbnail</label>
                       <div className="dropzone posR">
@@ -223,7 +263,9 @@ class EditMypage extends Component {
                     </div>
                   </form>
                   {this.state.provider === 'google.com' ? null : 
-                    <button className="md-btn md-btn--style01" onClick={this.handleChangePassword}>パスワードを変更する</button>
+                    <button className="md-btn md-btn--style01 btn--changePassword" onClick={this.handleChangePassword}>
+                      <span className="md-btn-name">パスワードを変更する</span>
+                    </button>
                   }
                 </div>
               </div>
