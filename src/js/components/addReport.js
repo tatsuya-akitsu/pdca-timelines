@@ -16,6 +16,7 @@ class AddReport extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      uid: '',
       date: moment(),
       actions: [],
       action: '',
@@ -36,6 +37,12 @@ class AddReport extends Component {
     this.handleRemoveTaskInput = this.handleRemoveTaskInput.bind(this);
     // 送信
     this.handleAddReports = this.handleAddReports.bind(this);
+  }
+
+  componentDidMount() {
+    this.setState({
+      uid: firebase.auth().currentUser.uid,
+    })
   }
 
   handleOnDate(date) {
@@ -118,11 +125,13 @@ class AddReport extends Component {
       tasks: tasks,
       logs: [],
       retro: '',
-      nextActions: []
+      nextActions: [],
+      uid: this.state.uid
     }
 
     newReportsRef.update(newReports).then(() => {
       this.setState({
+        uid: '',
         date: moment(),
         actions: [],
         tasks: []

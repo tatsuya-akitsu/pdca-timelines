@@ -10,10 +10,16 @@ class Reports extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      uid: '',
+      userId: '',
       reports: [],
     }
 
     this.db = firebase.database();
+  }
+
+  componentWillMount() {
+    this.setState({ userId: firebase.auth().currentUser.uid })
   }
 
   componentDidMount() {
@@ -23,10 +29,15 @@ class Reports extends Component {
   fetchReports() {
     return this.db.ref('/reports').limitToLast(20).once('value').then(snapshot => {
       const reports = [];
+      let uid = '';
       snapshot.forEach(item => {
+        uid = item.val().uid
         reports.push(Object.assign({key: item.key}, item.val()))
       });
-      this.setState({ reports })
+      this.setState({
+        reports,
+        uid: uid
+      })
     });
   }
 
@@ -57,6 +68,9 @@ class Reports extends Component {
           <div className="md-wrapper">
             <div className="md-inner">
               <ul className="report-list">
+                {this.state.uid === this.state.userId ? 
+                  console.log(this.state.uid, this.state.userId)
+                : null}
                 {reports.map(r => <ReportsItem report={r} key={r.key} selected={r.key === reportsId} />)}
               </ul>
               <Link to="/reports/report/add" className="md-btn md-btn--style01">

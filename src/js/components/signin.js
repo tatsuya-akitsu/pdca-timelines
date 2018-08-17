@@ -9,6 +9,7 @@ class Signin extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      uid: '',
       email: localStorage.email || '',
       password: localStorage.password || '',
       errors: [],
@@ -26,7 +27,8 @@ class Signin extends Component {
   componentDidMount() {
     firebase.auth().getRedirectResult().then(result => {
       if (result.user) {
-        hashHistory.push('/dashboard');
+        this.setState({ uid: result.user.uid })
+        hashHistory.push(`/dashboard/${this.state.uid}`)
       }
     })
   }
@@ -111,7 +113,8 @@ class Signin extends Component {
     firebase.auth().signInWithEmailAndPassword(email, password).then(() => {
       localStorage.email = email;
       localStorage.password = password;
-      hashHistory.push('/dashboard')
+      this.setState({ uid: firebase.auth().currentUser.uid })
+      hashHistory.push(`/dashboard/${this.state.uid}`)
     }).catch(() => {
       this.state.errors.push('ログインに失敗しました');
       this.setState({
