@@ -29,7 +29,7 @@ class App extends Component {
         <Route exact path="/" component={Main} />
         <Route path="/signup" component={Signup} />
         <Route path="/signin" component={Signin} />
-        <Route path="/dashboard" component={Dashboard} />
+        <Route path="/dashboard/:uid" component={Dashboard} />
         <Route path="/reports" component={Reports} />
         <Route path="/reports/report/add" component={AddReport} />
         <Route path="/reports/report/:reportId/edit" component={EditReport} />

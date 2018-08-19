@@ -16,6 +16,7 @@ class AddReport extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      uid: '',
       date: moment(),
       actions: [],
       action: '',
@@ -23,7 +24,7 @@ class AddReport extends Component {
       task: '',
     }
 
-    this.db = firebase.database();
+    this.db = firebase.firestore();
     // 日付
     this.handleOnDate = this.handleOnDate.bind(this);
     // アクション
@@ -36,6 +37,12 @@ class AddReport extends Component {
     this.handleRemoveTaskInput = this.handleRemoveTaskInput.bind(this);
     // 送信
     this.handleAddReports = this.handleAddReports.bind(this);
+  }
+
+  componentDidMount() {
+    this.setState({
+      uid: firebase.auth().currentUser.uid,
+    })
   }
 
   handleOnDate(date) {
@@ -110,24 +117,26 @@ class AddReport extends Component {
     e.preventDefault();
     const { date, actions, tasks } = this.state;
     const fmtDate = moment(date).format('YYYY/MM/DD')
+    const uid = firebase.auth().currentUser.uid;
 
-    const newReportsRef = this.db.ref('/reports').push();
-    const newReports = {
+    this.db.collection(uid).add({
       date: fmtDate,
       actions: actions,
       tasks: tasks,
       logs: [],
       retro: '',
       nextActions: []
-    }
-
-    newReportsRef.update(newReports).then(() => {
+    })
+    .then(() => {
       this.setState({
         date: moment(),
         actions: [],
         tasks: []
       })
       hashHistory.push('/reports')
+    })
+    .catch((error) =>  {
+      console.log(error)
     })
   }
 

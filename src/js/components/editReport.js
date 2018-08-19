@@ -24,6 +24,7 @@ class EditReport extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      uid: '',  // ユーザーID
       date: '', // レポート日時
       currentActions: [], // DBから取得したアクション
       newActions: [], // 新規追加するアクションの連想配列
@@ -50,7 +51,7 @@ class EditReport extends Component {
       inputRetro: '', // 入力された振り返りの一時回避場所
       allRetro: ''  // 新規追加する全体振り返り
     }
-    this.db = firebase.database();
+    this.db = firebase.firestore();
     // アクション
     this.handleAddAction = this.handleAddAction.bind(this)
     this.handleAddActionInput = this.handleAddActionInput.bind(this)
@@ -81,8 +82,7 @@ class EditReport extends Component {
   }
 
   componentWillMount() {
-    const { reportId } = this.props.params
-    this.fetchReports(reportId)
+    this.fetchReports()
   }
 
   handleAddAction(e) {
@@ -289,11 +289,14 @@ class EditReport extends Component {
     removeDOM.remove();
   }
 
-  fetchReports(reportId) {
-    this.fbReportsRef = this.db.ref('/reports/' + reportId);
-    this.fbReportsRef.once("value").then(snapshot => {
-      const { date, actions, tasks, logs, nextActions } = snapshot.val()
-      console.log(snapshot.val())
+  fetchReports() {
+    this.setState({ uid: firebase.auth().currentUser.uid })
+    const uid = firebase.auth().currentUser.uid
+    const { reportId } = this.props.params
+    const userDataRef = this.db.collection(uid)
+    userDataRef.doc(reportId).get().then((doc) => {
+      console.log(doc.data())
+      const { date, actions, tasks, logs, nextActions } = doc.data()
       this.setState({
         date: date,
         currentActions: actions,
@@ -301,12 +304,15 @@ class EditReport extends Component {
         currentLogs: logs,
         currentNextActions: nextActions
       })
-    });
+    }).catch((error) => {
+      console.log(error)
+    })
   }
 
   handleSetReport(e) {
     e.preventDefault();
     const { reportId } = this.props.params;
+    const uid = this.state.uid
     let newLogs = [];
     let newNextActions = [];
     const editActions = this.state.currentActions.concat(this.state.newActions)
@@ -333,18 +339,19 @@ class EditReport extends Component {
       nextActions: newNextActions
     }
 
-    this.db.ref('/reports/' + reportId).set(editLog).then(() => {
-      console.log('Report edit completed.')
+    return this.db.collection(uid).doc(reportId).update(editLog)
+    .then(() => {
+      console.log('Report edit Completed')
       hashHistory.push('/reports')
+    }).catch((error) => {
+      console.log(error)
     })
   }
 
   handleCompReport(e) {
     e.preventDefault();
-
-    const { reportId } = this.props.params
-    const setReportRef = this.db.ref('/reports').push();
-
+    const { reportId } = this.props.params;
+    const uid = this.state.uid
     let newLogs = [];
     let newNextActions = [];
     const editActions = this.state.currentActions.concat(this.state.newActions)
@@ -371,9 +378,12 @@ class EditReport extends Component {
       nextActions: newNextActions
     }
 
-    this.db.ref('/reports/' + reportId).set(editLog).then(() => {
-      console.log('Report edit completed.')
-      hashHistory.push(`/reports/report/${setReportRef.key}`)
+    return this.db.collection(uid).doc(reportId).update(editLog)
+    .then(() => {
+      console.log('Report edit Completed')
+      hashHistory.push(`/reports/report/${reportId}`)
+    }).catch((error) => {
+      console.log(error)
     })
   }
 

@@ -8,6 +8,7 @@ class Main extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      uid: '',
       errors: []
     }
 
@@ -17,7 +18,8 @@ class Main extends Component {
   componentDidMount() {
     firebase.auth().getRedirectResult().then(result => {
       if (result.user) {
-        hashHistory.push('/dashboard');
+        this.setState({ uid: result.user.uid })
+        hashHistory.push(`/dashboard/${this.state.uid}`);
       }
     })
   }
