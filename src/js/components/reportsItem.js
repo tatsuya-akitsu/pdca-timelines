@@ -12,14 +12,14 @@ import list from '../../images/list.svg';
 
 class ReportsItem extends Component {
   render() {
-    const { selected } = this.props;
     const { date, actions, tasks, nextActions, key } = this.props.report;
     return (
-      <li className={ selected ? 'reports-item is-selected' : 'reports-item' } key={key}>
+      <li className="reports-item" key={key}>
+        {console.log(this.props.report.tasks.length)}
         <div className="reports-wrap">
           <div className="reports-card-head posR">
             <div className="report-btn-wrap posA">
-              <Link to={`/reports/report/${key}/edit`} className="md-btn md-btn--style03">
+              <Link to={`/reports/report/${key}/edit`} className="md-btn md-btn--style03" key={key}>
                 <img src={edit} alt="" className="md-icon md-icon-edit" />
               </Link>
               <Link to={`/reports/report/${key}`} className="md-btn md-btn--style03 btn--color01">

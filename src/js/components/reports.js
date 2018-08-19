@@ -10,16 +10,10 @@ class Reports extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      uid: '',
-      userId: '',
       reports: [],
     }
 
-    this.db = firebase.database();
-  }
-
-  componentWillMount() {
-    this.setState({ userId: firebase.auth().currentUser.uid })
+    this.db = firebase.firestore();
   }
 
   componentDidMount() {
@@ -27,22 +21,17 @@ class Reports extends Component {
   }
 
   fetchReports() {
-    return this.db.ref('/reports').limitToLast(20).once('value').then(snapshot => {
-      const reports = [];
-      let uid = '';
-      snapshot.forEach(item => {
-        uid = item.val().uid
-        reports.push(Object.assign({key: item.key}, item.val()))
-      });
-      this.setState({
-        reports,
-        uid: uid
+    const uid = firebase.auth().currentUser.uid;
+    return this.db.collection(uid).get().then((querySnapshot) => {
+      const reports = []
+      querySnapshot.forEach((doc) => {
+        reports.push(Object.assign({key: doc.id}, doc.data()))
       })
-    });
+      this.setState({ reports, })
+    })
   }
 
   render() {
-    const reportsId = this.props.params;
     const { reports } = this.state;
     return (
       <div id="l-contain">
@@ -68,10 +57,11 @@ class Reports extends Component {
           <div className="md-wrapper">
             <div className="md-inner">
               <ul className="report-list">
-                {this.state.uid === this.state.userId ? 
-                  console.log(this.state.uid, this.state.userId)
-                : null}
-                {reports.map(r => <ReportsItem report={r} key={r.key} selected={r.key === reportsId} />)}
+                {reports.map((r) => {
+                  return (
+                    <ReportsItem report={r} key={r.key} />
+                  )
+                })}
               </ul>
               <Link to="/reports/report/add" className="md-btn md-btn--style01">
                 <span className="md-btn-name">新規追加</span>
