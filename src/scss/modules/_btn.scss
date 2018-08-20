@@ -46,6 +46,15 @@
   }
 }
 
+.btn--color05 {
+  background-color: $base-wh;
+  border: 1px solid #DF15FF;
+
+  .md-btn-name {
+    color: #DF15FF;
+  }
+}
+
 .md-btn-square {
   border-radius: 3px;
   display: inline-block;
