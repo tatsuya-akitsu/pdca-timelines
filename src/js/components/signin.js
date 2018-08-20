@@ -28,7 +28,7 @@ class Signin extends Component {
     firebase.auth().getRedirectResult().then(result => {
       if (result.user) {
         this.setState({ uid: result.user.uid })
-        hashHistory.push(`/dashboard/${this.state.uid}`)
+        hashHistory.push('/dashboard')
       }
     })
   }

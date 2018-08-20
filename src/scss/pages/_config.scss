@@ -1,0 +1,29 @@
+.md-section--config {
+  .md-wrapper {
+    margin: 0 auto;
+    max-width: 780px;
+    text-align: center;
+  }
+
+  .md-title-h2--small {
+    color: $base-pu;
+    text-align: left;
+  }
+
+  .md-title-h3 {
+    text-align: left;
+  }
+
+  .md-text {
+    margin: 4rem 0 0;
+    text-align: left;
+  }
+
+  .delete-link {
+    text-decoration: underline;
+  }
+
+  .md-btn {
+    margin: 3rem 0 0;
+  }
+}

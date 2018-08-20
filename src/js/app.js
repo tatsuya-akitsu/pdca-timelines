@@ -9,11 +9,9 @@ import Reports from './components/reports';
 import AddReport from './components/addReport';
 import EditReport from './components/editReport';
 import ReportDetail from './components/reportDetail';
-// import Dissections from './components/dissections';
-// import Dissection from './components/dissection';
 import Mypage from './components/mypage';
 import EditMypage from './components/editMypage';
-// import Config from './components/config';
+import Config from './components/config'
 // import Terms from './components/terms';
 // import Policy from './components/policy';
 // import NotFound from './components/notFound';
@@ -29,16 +27,14 @@ class App extends Component {
         <Route exact path="/" component={Main} />
         <Route path="/signup" component={Signup} />
         <Route path="/signin" component={Signin} />
-        <Route path="/dashboard/:uid" component={Dashboard} />
+        <Route path="/dashboard" component={Dashboard} />
         <Route path="/reports" component={Reports} />
         <Route path="/reports/report/add" component={AddReport} />
         <Route path="/reports/report/:reportId/edit" component={EditReport} />
         <Route path="/reports/report/:reportId" component={ReportDetail} />
         <Route path="/mypage/:uid" component={Mypage} />
         <Route path="/mypage/:uid/edit" component={EditMypage} />
-        {/* <Route path="/dissections" component={Dissections} />
-        <Route path="/dissections/dissection/:dissectionId" component={Dissection} /> */}
-        {/* <Route path="/room/:roomId" component={Room} /> */}
+        <Route path="/settings/:uid" component={Config} />
       </Router>
     );
   }
