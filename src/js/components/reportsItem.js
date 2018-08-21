@@ -15,7 +15,6 @@ class ReportsItem extends Component {
     const { date, actions, tasks, nextActions, key } = this.props.report;
     return (
       <li className="reports-item" key={key}>
-        {console.log(this.props.report.tasks.length)}
         <div className="reports-wrap">
           <div className="reports-card-head posR">
             <div className="report-btn-wrap posA">
@@ -43,9 +42,9 @@ class ReportsItem extends Component {
             <div className="report-task-wrap">
               <p className="md-title md-tasks-title">Tasks</p>
               <ul className="report-task-list">
-                {tasks.map((t) => {
+                {tasks.map((t, i) => {
                   return (
-                    <li className="form-item">{t}</li>
+                    <li className="form-item" key={i}>{t.task}</li>
                   );
                 })}
               </ul>

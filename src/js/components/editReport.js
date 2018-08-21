@@ -444,10 +444,11 @@ class EditReport extends Component {
                   <label>タスク</label>
                   <ul className="form-list">
                     {currentTasks.map((t, i) => {
+                      console.log(t, i)
                       return (
                         <div className="task-checkbox-wrap" key={i}>
                           <label className="task-checkbox">
-                            <input type="checkbox" name="task" value={i} />
+                            <input type="checkbox" name="task" value={t} />
                             <span className="md-icon md-icon-checkbox" />
                             <span className="md-text md-task-name">
                               {t}
