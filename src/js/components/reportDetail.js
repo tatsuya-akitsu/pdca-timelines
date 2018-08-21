@@ -6,6 +6,7 @@ class ReportDetail extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      uid: '',
       date: null,
       actions: [],
       tasks: [],
@@ -13,27 +14,29 @@ class ReportDetail extends Component {
       logs: [],
       allRetro: ''
     }
-    this.db = firebase.database();
+    this.db = firebase.firestore();
   }
 
   componentWillMount() {
-    const { reportId } = this.props.params
-    this.fetchReports(reportId)
+    this.fetchReports()
   }
 
-  fetchReports(reportId) {
-    this.fbReportsRef = this.db.ref('/reports/' + reportId);
-    this.fbReportsRef.once("value").then(snapshot => {
-      const { date, actions, tasks, nextActions, logs, allRetro } = snapshot.val()
+  fetchReports() {
+    this.setState({ uid: firebase.auth().currentUser.uid })
+    const uid = firebase.auth().currentUser.uid
+    const { reportId } = this.props.params
+    this.db.collection(uid).doc(reportId).get().then((doc) => {
+      console.log(doc.data())
+      const { date, actions, tasks, logs, retro, nextActions } = doc.data()
       this.setState({
         date: date,
         actions: actions,
         tasks: tasks,
         nextActions: nextActions,
         logs: logs,
-        allRetro: allRetro
+        allRetro: retro
       })
-    });
+    })
   }
 
   render() {

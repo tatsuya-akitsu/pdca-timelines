@@ -21,6 +21,10 @@ class AddReport extends Component {
       actions: [],
       action: '',
       tasks: [],
+      taskItem: {
+        task: '',
+        check: false
+      },
       task: '',
     }
 
@@ -73,44 +77,51 @@ class AddReport extends Component {
     e.preventDefault();
 
     // 該当するデータをstateの連想配列から削除
-    const removeVal = e.target.previousElementSibling.previousElementSibling.value;
+    const removeVal = e.target.previousElementSibling.textContent;
     const actions = this.state.actions;
-    for (let i = 0; i< actions.length; i++) {
-      if (actions[i].action === removeVal) {
-        actions.splice(i, 1)
+
+    for (let i = 0; i < actions.length; i++) {
+      if (actions[i] === removeVal) {
+        const arrActions = actions.filter(n => n !== actions[i])
+        this.setState({ actions: arrActions })
       }
     }
-
-    // 該当するデータのDOMを削除
-    const removeDOM = e.target.parentNode
-    removeDOM.remove();
   }
 
   handleAddTaskInput(e) {
     e.preventDefault();
+
     // 入力された値を連想配列に追加
-    const task = this.state.task
-    this.state.tasks.push(task)
+    const { task } = this.state
+    this.state.taskItem.task = task
+    this.state.tasks.push(this.state.taskItem)
+
+    let taskItem = new Object
+    taskItem.task = ''
+    taskItem.check = false
+
     const input = document.getElementsByClassName('md-form-input--task')
     input[0].value = ""
-    this.setState({ task: '' })
+    this.setState({
+      taskItem,
+      task: ''
+    })
   }
 
   handleRemoveTaskInput(e) {
     e.preventDefault();
 
     // 該当するデータをstateの連想配列から削除
-    const removeVal = e.target.previousElementSibling.previousElementSibling.value;
+    const removeVal = e.target.previousElementSibling.textContent;
     const tasks = this.state.tasks;
-    for (let i = 0; i< tasks.length; i++) {
+    for (let i = 0; i < tasks.length; i++) {
       if (tasks[i].task === removeVal) {
-        tasks.splice(i, 1)
+        const results = tasks.filter((item) => {
+          return item != tasks[i]
+        })
+        this.setState({ tasks: results })
       }
     }
-
-    // 該当するデータのDOMを削除
-    const removeDOM = e.target.parentNode
-    removeDOM.remove();
   }
 
   handleAddReports(e) {
@@ -203,10 +214,11 @@ class AddReport extends Component {
                 <div className="md-form-group">
                   <label>タスク</label>
                   <ul className="form-list">
+                    {console.log(this.state)}
                     {this.state.tasks.map((t, i) => {
                       return (
                         <li className="form-item" key={i}>
-                          <span className="form-item-name">{t}</span>
+                          <span className="form-item-name">{t.task}</span>
                           <button className="md-btn-square md-btn-minus posR" onClick={this.handleRemoveTaskInput} />
                         </li>
                       )
