@@ -22,10 +22,12 @@ class AddReport extends Component {
       action: '',
       tasks: [],
       taskItem: {
+        id: 0,
         task: '',
         check: false
       },
       task: '',
+      taskId: 0,
     }
 
     this.db = firebase.firestore();
@@ -94,9 +96,13 @@ class AddReport extends Component {
     // 入力された値を連想配列に追加
     const { task } = this.state
     this.state.taskItem.task = task
+    this.state.taskItem.id = this.state.taskId++
     this.state.tasks.push(this.state.taskItem)
 
+    this.setState({ taskId: this.state.taskId++ })
+
     let taskItem = new Object
+    taskItem.id = this.state.taskId
     taskItem.task = ''
     taskItem.check = false
 
