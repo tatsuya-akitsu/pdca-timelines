@@ -3,7 +3,11 @@
 }
 
 .isLogined {
-  background-color: #f6f4ff;
+  background-color: #fbfaff;
+
+  .l-header-wrap {
+    padding: 1.2rem 3rem;
+  }
 }
 
 .md-section-header {
@@ -36,9 +40,9 @@
 .user-img {
   border-radius: 3px;
   cursor: pointer;
-  height: 4.5rem;
+  height: 3.5rem;
   max-width: 100%;
-  width: 4.5rem;
+  width: 3.5rem;
 }
 
 .md-header-nav {
@@ -63,14 +67,15 @@
 
     &.isFocused {
       &::before {
-        background-color: #b898ff;
-        bottom: -1.8rem;
+        background-color: #2a0084;
+        bottom: -1.2rem;
         content: '';
         display: block;
         height: 5px;
-        left: 0;
+        left: 50%;
         position: absolute;
-        width: 100%;
+        transform: translate(-50%, 0);
+        width: 15rem;
       }
     }
   }

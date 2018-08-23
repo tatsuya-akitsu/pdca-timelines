@@ -191,6 +191,20 @@ class EditReport extends Component {
     removeDOM.remove();
   }
 
+  handleCheck(id) {
+    const nextState = this.state.currentTasks.map((t, i) => {
+      console.log(t, i)
+      return {
+        id: t.id,
+        task: t.task,
+        check: (t.id === id ? !t.check: t.check)
+      }
+    })
+
+    console.log(nextState)
+    this.setState({ currentTasks: nextState })
+  }
+
   handleStartLog(e) {
     e.preventDefault();
     this.setState({ inputStart: moment().format('hh:mm') })
@@ -443,15 +457,22 @@ class EditReport extends Component {
                 <div className="md-form-group">
                   <label>タスク</label>
                   <ul className="form-list">
+                    {console.log(this.state, 'state')}
                     {currentTasks.map((t, i) => {
                       console.log(t, i)
                       return (
                         <div className="task-checkbox-wrap" key={i}>
                           <label className="task-checkbox">
-                            <input type="checkbox" name="task" value={t} />
+                            <input
+                              type="checkbox"
+                              name="task"
+                              value={t.task}
+                              checked={t.check}
+                              onChange={this.handleCheck.bind(this, t.id)}
+                            />
                             <span className="md-icon md-icon-checkbox" />
                             <span className="md-text md-task-name">
-                              {t}
+                              {t.task}
                             </span>
                           </label>
                         </div>
