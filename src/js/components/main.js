@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Link, hashHistory } from 'react-router';
+import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router';
 import firebase from 'firebase';
 
 import GlobalHeader from './header';
@@ -19,7 +20,7 @@ class Main extends Component {
     firebase.auth().getRedirectResult().then(result => {
       if (result.user) {
         this.setState({ uid: result.user.uid })
-        hashHistory.push('/dashboard');
+        this.props.history.push('/dashboard')
       }
     })
   }
@@ -70,4 +71,4 @@ class Main extends Component {
   }
 }
 
-export default Main;
+export default withRouter(Main)

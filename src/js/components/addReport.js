@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { hashHistory } from 'react-router';
+import { withRouter } from 'react-router-dom';
 import firebase from 'firebase';
 import moment from 'moment';
 import DatePicker from 'react-datepicker';
@@ -150,7 +150,7 @@ class AddReport extends Component {
         actions: [],
         tasks: []
       })
-      hashHistory.push('/reports')
+      this.props.history.push('/reports')
     })
     .catch((error) =>  {
       console.log(error)
@@ -257,4 +257,4 @@ class AddReport extends Component {
   }
 }
 
-export default AddReport;
+export default withRouter(AddReport)

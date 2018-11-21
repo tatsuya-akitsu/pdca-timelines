@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link, hashHistory } from 'react-router';
+import { withRouter } from 'react-router';
 import firebase from 'firebase';
 
 import GlobalHeader from './header';
@@ -28,7 +28,7 @@ class Signin extends Component {
     firebase.auth().getRedirectResult().then(result => {
       if (result.user) {
         this.setState({ uid: result.user.uid })
-        hashHistory.push('/dashboard')
+        this.props.history.push('/dashboard')
       }
     })
   }
@@ -111,10 +111,12 @@ class Signin extends Component {
     }
 
     firebase.auth().signInWithEmailAndPassword(email, password).then(() => {
+      // eslint-disable-next-line no-undef
       localStorage.email = email;
+      // eslint-disable-next-line no-undef
       localStorage.password = password;
       this.setState({ uid: firebase.auth().currentUser.uid })
-      hashHistory.push(`/dashboard/${this.state.uid}`)
+      this.props.history.push(`/dashboard/${this.state.id}`)
     }).catch(() => {
       this.state.errors.push('ログインに失敗しました');
       this.setState({
@@ -193,4 +195,4 @@ class Signin extends Component {
   }
 }
 
-export default Signin;
+export default withRouter(Signin)

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 
 import sun from '../../images/sun.svg';
 import rain from '../../images/rain.svg';

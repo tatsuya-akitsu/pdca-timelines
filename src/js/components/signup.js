@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Link, hashHistory } from 'react-router';
+import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router';
 import firebase from 'firebase';
 
 import GlobalHeader from './header';
@@ -172,7 +173,7 @@ class Signup extends Component {
         photoURL: photoURL
       });
     }).then(() => {
-      hashHistory.push('/dashboard');
+      this.props.history.push('/dashboard')
     }).catch(err => {
       this.setState({
         errors: [err.message],
@@ -277,4 +278,4 @@ class Signup extends Component {
   }
 }
 
-export default Signup;
+export default withRouter(Signup)
