@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Router, Route, hashHistory } from 'react-router';
+import { HashRouter, Route, Switch } from 'react-router-dom';
 
 import Main from './components/main';
 import Signup from './components/signup';
@@ -12,9 +12,6 @@ import ReportDetail from './components/reportDetail';
 import Mypage from './components/mypage';
 import EditMypage from './components/editMypage';
 import Config from './components/config'
-// import Terms from './components/terms';
-// import Policy from './components/policy';
-// import NotFound from './components/notFound';
 
 class App extends Component {
   constructor(props) {
@@ -23,19 +20,21 @@ class App extends Component {
 
   render() {
     return (
-      <Router history={hashHistory}>
-        <Route exact path="/" component={Main} />
-        <Route path="/signup" component={Signup} />
-        <Route path="/signin" component={Signin} />
-        <Route path="/dashboard" component={Dashboard} />
-        <Route path="/reports" component={Reports} />
-        <Route path="/reports/report/add" component={AddReport} />
-        <Route path="/reports/report/:reportId/edit" component={EditReport} />
-        <Route path="/reports/report/:reportId" component={ReportDetail} />
-        <Route path="/mypage/:uid" component={Mypage} />
-        <Route path="/mypage/:uid/edit" component={EditMypage} />
-        <Route path="/settings/:uid" component={Config} />
-      </Router>
+      <HashRouter>
+        <Switch>
+          <Route exact path="/" component={Main} />
+          <Route path="/signup" component={Signup} />
+          <Route path="/signin" component={Signin} />
+          <Route path="/dashboard" component={Dashboard} />
+          <Route path="/reports" component={Reports} />
+          <Route path="/reports/report/add" component={AddReport} />
+          <Route path="/reports/report/:reportId/edit" component={EditReport} />
+          <Route path="/reports/report/:reportId" component={ReportDetail} />
+          <Route path="/mypage/:uid" component={Mypage} />
+          <Route path="/mypage/:uid/edit" component={EditMypage} />
+          <Route path="/settings/:uid" component={Config} />
+        </Switch>
+      </HashRouter>
     );
   }
 }

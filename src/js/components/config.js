@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Link, hashHistory } from 'react-router';
+import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router';
 import firebase from 'firebase';
 
 import GlobalHeader from './header';
@@ -25,7 +26,7 @@ class Config extends Component {
         })
       })
       console.log('User data deletion complete')
-      hashHistory.push('/#/')
+      this.props.history.push('/')
     }).catch((error) => {
       console.log(error)
     })
@@ -55,4 +56,4 @@ class Config extends Component {
   }
 }
 
-export default Config
+export default withRouter(Config)

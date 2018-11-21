@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Link, hashHistory } from 'react-router';
+import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router';
 import ClassNames from '../../../node_modules/classnames';
 import firebase from 'firebase';
 
@@ -81,7 +82,7 @@ class GlobalHeader extends Component {
   handleLogout(e) {
     e.preventDefault()
     firebase.auth().signOut().then(() => {
-      hashHistory.push('/')
+      this.props.history.push('/')
     }).then((err) => {
       console.log(err)
     })
@@ -163,4 +164,4 @@ class GlobalHeader extends Component {
   }
 }
 
-export default GlobalHeader
+export default withRouter(GlobalHeader)

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Link, hashHistory } from 'react-router';
+import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router';
 import firebase from 'firebase';
 import moment from 'moment';
 
@@ -356,7 +357,7 @@ class EditReport extends Component {
     return this.db.collection(uid).doc(reportId).update(editLog)
     .then(() => {
       console.log('Report edit Completed')
-      hashHistory.push('/reports')
+      this.props.history.push('/reports')
     }).catch((error) => {
       console.log(error)
     })
@@ -395,7 +396,7 @@ class EditReport extends Component {
     return this.db.collection(uid).doc(reportId).update(editLog)
     .then(() => {
       console.log('Report edit Completed')
-      hashHistory.push(`/reports/report/${reportId}`)
+      this.props.history.push(`/reports/report/${reportId}`)
     }).catch((error) => {
       console.log(error)
     })
@@ -637,4 +638,4 @@ class EditReport extends Component {
   }
 }
 
-export default EditReport;
+export default withRouter(EditReport)
